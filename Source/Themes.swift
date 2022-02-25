@@ -23,7 +23,7 @@ public class Theme: ThemeProtocol {
     public var extend: (() -> Void)?
     
     // MARK: - Init-
-    init(assets: ThemeAssets, extension: (() -> Void)? = nil) {
+    public init(assets: ThemeAssets, extension: (() -> Void)? = nil) {
         self.assets = assets
         self.extend = `extension`
     }

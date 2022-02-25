@@ -10,7 +10,7 @@ import UIKit
 
 // MARK: - UIView -
 
-public class ThemableView: UIView {
+open class ThemableView: UIView {
     @objc dynamic var cornerRadius: CGFloat {
         get { self.cornerRadius }
         set(value) { layer.cornerRadius = value }
@@ -57,7 +57,7 @@ public class ThemedView: ThemableView {}
 
 // MARK: - UIButton -
 
-public class ThemableButton: UIButton {
+open class ThemableButton: UIButton {
     @objc dynamic var cornerRadius: CGFloat {
         get { self.cornerRadius }
         set(value) { layer.cornerRadius = value }
@@ -104,21 +104,22 @@ public class ThemedButton: ThemableButton {
 
 // MARK: - UILabel -
 
-public class ThemableLabel: UILabel {}
+open class ThemableLabel: UILabel {}
 public class ThemedLabel: ThemableLabel {}
 
 // MARK: - UISwitch -
 
-public class ThemableSwitch: UISwitch {}
+open class ThemableSwitch: UISwitch {
+}
 public class ThemedSwitch: ThemableSwitch {}
 
 // MARK: - UIImageView -
 
-public class ThemableImageView: UIImageView {
+open class ThemableImageView: UIImageView {
     var lightImage: UIImage?
     var darkImage: UIImage?
     
-    init(namedTinted: String) {
+    public init(namedTinted: String) {
         super.init(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
         let assetImage = UIImage(named: namedTinted)
         assert(assetImage != nil)
@@ -130,14 +131,14 @@ public class ThemableImageView: UIImageView {
         }
     }
     
-    init(namedAny: String) {
+    public init(namedAny: String) {
         super.init(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
         lightImage = UIImage(named: namedAny)
         darkImage = UIImage(named: namedAny)
         setImageToCurretTheme()
     }
     
-    init(namedLight imageLight: String, namedDark imageDark: String) {
+    public init(namedLight imageLight: String, namedDark imageDark: String) {
         super.init(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
         lightImage = UIImage(named: imageLight)
         darkImage = UIImage(named: imageDark)
@@ -145,7 +146,7 @@ public class ThemableImageView: UIImageView {
         setImageToCurretTheme()
     }
     
-    required init?(coder: NSCoder) {
+    required public init?(coder: NSCoder) {
         super.init(coder: coder)
     }
     
@@ -215,7 +216,7 @@ public class ThemedImageView: ThemableImageView {
 
 // MARK: - UITableView -
 
-public class ThemableTableView: UITableView {
+open class ThemableTableView: UITableView {
     @objc dynamic var cornerRadius: CGFloat {
         get { self.cornerRadius }
         set(newValue) { layer.cornerRadius = newValue }
@@ -263,7 +264,7 @@ public class ThemedTableView: ThemableTableView {
 
 // MARK: - UITableViewCell -
 
-public class ThemableTableViewCell: UITableViewCell {
+open class ThemableTableViewCell: UITableViewCell {
     @objc dynamic var cornerRadius: CGFloat {
         get { self.cornerRadius }
         set(newValue) { layer.cornerRadius = newValue }
@@ -305,14 +306,14 @@ public class ThemableTableViewCell: UITableViewCell {
         set(newValue) { layer.shadowOpacity = newValue }
     }
 }
-public class ThemedTableViewCell: ThemableTableViewCell {
+open class ThemedTableViewCell: ThemableTableViewCell {
     
 }
 
 
 // MARK: - UICollectionView -
 
-public class ThemableCollectionView: UICollectionView {
+open class ThemableCollectionView: UICollectionView {
     @objc dynamic var cornerRadius: CGFloat {
         get { self.cornerRadius }
         set(newValue) { layer.cornerRadius = newValue }
@@ -359,7 +360,7 @@ public  class ThemedCollectionView: ThemableCollectionView { }
 
 // MARK: - UICollectionViewCell -
 
-public class ThemableCollectionViewCell: UICollectionViewCell {
+open class ThemableCollectionViewCell: UICollectionViewCell {
     @objc dynamic var cornerRadius: CGFloat {
         get { self.cornerRadius }
         set(newValue) { layer.cornerRadius = newValue }
@@ -406,7 +407,7 @@ public class ThemedCollectionViewCell: ThemableCollectionViewCell {
 }
 // MARK: - UINavigationBar -
 
-public class ThemeableNavigationBar: UINavigationBar {
+open class ThemeableNavigationBar: UINavigationBar {
     @objc dynamic var titleFont: UIFont? {
         get { self.titleTextAttributes?[.font] as? UIFont ?? nil}
         set(value) {

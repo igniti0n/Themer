@@ -27,7 +27,7 @@ public struct ThemeAssets {
     private var assets: [ThemeAsset] = []
     
     // MARK: - Init -
-    init(viewAssets: ViewAssets<ThemedView> = ViewAssets(),
+    public init(viewAssets: ViewAssets<ThemedView> = ViewAssets(),
          labelAssets: LabelAssets<ThemedLabel> = LabelAssets(),
          buttonAssets: ButtonAssets<ThemedButton> = ButtonAssets(),
          imageViewAssets: ImageViewAssets<ThemedImageView> = ImageViewAssets(),

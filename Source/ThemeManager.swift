@@ -24,6 +24,16 @@ public struct ThemeAnimationSettings {
     let duration: TimeInterval
     let delay: TimeInterval
     let animationOptions: UIView.AnimationOptions
+    
+    public init(
+        duration: TimeInterval,
+        delay: TimeInterval,
+        animationOptions: UIView.AnimationOptions
+    ) {
+        self.duration = duration
+        self.delay = delay
+        self.animationOptions = animationOptions
+    }
 }
 
 public protocol ThemeManagerDelegateProtocol {
@@ -40,7 +50,7 @@ public class ThemeManager {
     // MARK: - Properties -
     public static let shared: ThemeManager = ThemeManager()
     // is currenty theme mode light, dark or system default
-    var currentThemeType: AppThemeType = .systemDefault
+   public var currentThemeType: AppThemeType = .systemDefault
     //  currently applieed theme either dark or light
     var currentlyAppliedTheme: AppThemeType?
     var animationSettings: ThemeAnimationSettings?

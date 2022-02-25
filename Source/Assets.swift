@@ -20,6 +20,26 @@ public struct ViewAssets<T: ThemableView>: ThemeAsset {
     var shadowRadius: CGFloat?
     var shadowOpacity: Float?
     
+    public init(
+        color: UIColor? = nil,
+        cornerRadius: CGFloat? = nil,
+        borderColor: UIColor? = nil,
+        borderWidth: CGFloat? = nil,
+        shadowColor: UIColor? = nil,
+        shadowOffset: CGSize? = nil,
+        shadowRadius: CGFloat? = nil,
+        shadowOpacity: Float? = nil
+    ) {
+        self.color = color
+        self.cornerRadius = cornerRadius
+        self.borderColor = borderColor
+        self.borderWidth = borderWidth
+        self.shadowColor = shadowColor
+        self.shadowOffset = shadowOffset
+        self.shadowRadius = shadowRadius
+        self.shadowOpacity = shadowOpacity
+    }
+    
     public func activate() {
         T.appearance().backgroundColor = color
         T.appearance().cornerRadius = cornerRadius ?? 0
@@ -52,6 +72,7 @@ public struct ViewAssets<T: ThemableView>: ThemeAsset {
 
 public struct NavigationBarAssets<T: ThemedNavigationBar>: ThemeAsset {
     var color: UIColor?
+    var font: UIFont?
     var cornerRadius: CGFloat?
     var borderColor: UIColor?
     var borderWidth: CGFloat?
@@ -59,7 +80,28 @@ public struct NavigationBarAssets<T: ThemedNavigationBar>: ThemeAsset {
     var shadowOffset: CGSize?
     var shadowRadius: CGFloat?
     var shadowOpacity: Float?
-    var font: UIFont?
+    
+    public init(
+        color: UIColor? = nil,
+        font: UIFont? = nil,
+        cornerRadius: CGFloat? = nil,
+        borderColor: UIColor? = nil,
+        borderWidth: CGFloat? = nil,
+        shadowColor: UIColor? = nil,
+        shadowOffset: CGSize? = nil,
+        shadowRadius: CGFloat? = nil,
+        shadowOpacity: Float? = nil
+    ) {
+        self.color = color
+        self.font = font
+        self.cornerRadius = cornerRadius
+        self.borderColor = borderColor
+        self.borderWidth = borderWidth
+        self.shadowColor = shadowColor
+        self.shadowOffset = shadowOffset
+        self.shadowRadius = shadowRadius
+        self.shadowOpacity = shadowOpacity
+    }
     
     public func activate() {
         T.appearance().titleFont = font
@@ -79,14 +121,14 @@ public struct NavigationBarAssets<T: ThemedNavigationBar>: ThemeAsset {
         }
         return NavigationBarAssets(
             color: newAssets.color ?? self.color,
+            font: newAssets.font ?? self.font,
             cornerRadius: newAssets.cornerRadius ?? self.cornerRadius,
             borderColor: newAssets.borderColor ?? self.borderColor,
             borderWidth: newAssets.borderWidth ?? self.borderWidth,
             shadowColor: newAssets.shadowColor ?? self.shadowColor,
             shadowOffset: newAssets.shadowOffset ?? self.shadowOffset,
             shadowRadius: newAssets.shadowRadius ?? self.shadowRadius,
-            shadowOpacity: newAssets.shadowOpacity ?? self.shadowOpacity,
-            font: newAssets.font ?? self.font
+            shadowOpacity: newAssets.shadowOpacity ?? self.shadowOpacity
         )
     }
 }
@@ -98,6 +140,16 @@ public struct LabelAssets<T: ThemableLabel>: ThemeAsset {
     var color: UIColor?
     var font: UIFont?
     var backgroundColor: UIColor?
+    
+    public init(
+        color: UIColor? = nil,
+        font: UIFont? = nil,
+        backgroundColor: UIColor? = nil
+    ) {
+        self.color = color
+        self.font = font
+        self.backgroundColor = backgroundColor
+    }
     
     public func activate() {
         T.appearance().textColor = color
@@ -130,6 +182,30 @@ public struct ButtonAssets<T: ThemableButton>: ThemeAsset {
     var shadowOffset: CGSize?
     var shadowRadius: CGFloat?
     var shadowOpacity: Float?
+    
+    public init(
+        buttonColor: UIColor? = nil,
+        titleColor: UIColor? = nil,
+        font: UIFont? = nil,
+        cornerRadius: CGFloat? = nil,
+        borderColor: UIColor? = nil,
+        borderWidth: CGFloat? = nil,
+        shadowColor: UIColor? = nil,
+        shadowOffset: CGSize? = nil,
+        shadowRadius: CGFloat? = nil,
+        shadowOpacity: Float? = nil
+    ) {
+        self.buttonColor = buttonColor
+        self.titleColor = titleColor
+        self.font = font
+        self.cornerRadius = cornerRadius
+        self.borderColor = borderColor
+        self.borderWidth = borderWidth
+        self.shadowColor = shadowColor
+        self.shadowOffset = shadowOffset
+        self.shadowRadius = shadowRadius
+        self.shadowOpacity = shadowOpacity
+    }
     
     public func activate() {
         T.appearance().backgroundColor = buttonColor
@@ -172,6 +248,20 @@ public struct SwitchAssets<T: ThemableSwitch>: ThemeAsset {
     var thumbTintColor: UIColor?
     var onTintColor: UIColor?
     
+    public init(
+        backgroundColor: UIColor? = nil,
+        onImage: UIImage? = nil,
+        offImage: UIImage? = nil,
+        thumbTintColor: UIColor? = nil,
+        onTintColor: UIColor? = nil
+    ) {
+        self.backgroundColor = backgroundColor
+        self.onImage = onImage
+        self.offImage = offImage
+        self.thumbTintColor = thumbTintColor
+        self.onTintColor = onTintColor
+    }
+    
     public func activate() {
         T.appearance().backgroundColor = backgroundColor
         T.appearance().onImage = onImage
@@ -207,6 +297,28 @@ public struct ImageViewAssets<T: ThemableImageView>: ThemeAsset {
     var shadowOpacity: Float?
     var tintColor: UIColor?
     
+    public init(
+        backgroundColor: UIColor? = nil,
+        cornerRadius: CGFloat? = nil,
+        borderColor: UIColor? = nil,
+        borderWidth: CGFloat? = nil,
+        shadowColor: UIColor? = nil,
+        shadowOffset: CGSize? = nil,
+        shadowRadius: CGFloat? = nil,
+        shadowOpacity: Float? = nil,
+        tintColor: UIColor? = nil
+    ) {
+        self.backgroundColor = backgroundColor
+        self.cornerRadius = cornerRadius
+        self.borderColor = borderColor
+        self.borderWidth = borderWidth
+        self.shadowColor = shadowColor
+        self.shadowOffset = shadowOffset
+        self.shadowRadius = shadowRadius
+        self.shadowOpacity = shadowOpacity
+        self.tintColor = tintColor
+    }
+    
     public func activate() {
         T.appearance().backgroundColor = backgroundColor
         T.appearance().cornerRadius = cornerRadius ?? 0
@@ -218,7 +330,7 @@ public struct ImageViewAssets<T: ThemableImageView>: ThemeAsset {
         T.appearance().shadowOpacity = shadowOpacity ?? 0
         if let tintColor = tintColor {
             T.appearance().tintColor = tintColor
-
+            
         }
     }
     
@@ -251,6 +363,26 @@ public struct TableViewAssets<T: ThemableTableView>: ThemeAsset {
     var shadowOffset: CGSize?
     var shadowRadius: CGFloat?
     var shadowOpacity: Float?
+    
+    public init(
+        backgroundColor: UIColor? = nil,
+        cornerRadius: CGFloat? = nil,
+        borderColor: UIColor? = nil,
+        borderWidth: CGFloat? = nil,
+        shadowColor: UIColor? = nil,
+        shadowOffset: CGSize? = nil,
+        shadowRadius: CGFloat? = nil,
+        shadowOpacity: Float? = nil
+    ) {
+        self.backgroundColor = backgroundColor
+        self.cornerRadius = cornerRadius
+        self.borderColor = borderColor
+        self.borderWidth = borderWidth
+        self.shadowColor = shadowColor
+        self.shadowOffset = shadowOffset
+        self.shadowRadius = shadowRadius
+        self.shadowOpacity = shadowOpacity
+    }
     
     public func activate() {
         T.appearance().backgroundColor = backgroundColor
@@ -292,6 +424,26 @@ public struct TableViewCellAssets<T: ThemableTableViewCell>: ThemeAsset {
     var shadowRadius: CGFloat?
     var shadowOpacity: Float?
     
+    public init(
+        backgroundColor: UIColor? = nil,
+        cornerRadius: CGFloat? = nil,
+        borderColor: UIColor? = nil,
+        borderWidth: CGFloat? = nil,
+        shadowColor: UIColor? = nil,
+        shadowOffset: CGSize? = nil,
+        shadowRadius: CGFloat? = nil,
+        shadowOpacity: Float? = nil
+    ) {
+        self.backgroundColor = backgroundColor
+        self.cornerRadius = cornerRadius
+        self.borderColor = borderColor
+        self.borderWidth = borderWidth
+        self.shadowColor = shadowColor
+        self.shadowOffset = shadowOffset
+        self.shadowRadius = shadowRadius
+        self.shadowOpacity = shadowOpacity
+    }
+    
     public func activate() {
         T.appearance().backgroundColor = backgroundColor
         T.appearance().cornerRadius = cornerRadius ?? 0
@@ -332,6 +484,27 @@ public struct CollectionViewAssets<T: ThemableCollectionView>: ThemeAsset {
     var shadowRadius: CGFloat?
     var shadowOpacity: Float?
     
+    public init(
+        backgroundColor: UIColor? = nil,
+        cornerRadius: CGFloat? = nil,
+        borderColor: UIColor? = nil,
+        borderWidth: CGFloat? = nil,
+        shadowColor: UIColor? = nil,
+        shadowOffset: CGSize? = nil,
+        shadowRadius: CGFloat? = nil,
+        shadowOpacity: Float? = nil,
+        tintColor: Float? = nil
+    ) {
+        self.backgroundColor = backgroundColor
+        self.cornerRadius = cornerRadius
+        self.borderColor = borderColor
+        self.borderWidth = borderWidth
+        self.shadowColor = shadowColor
+        self.shadowOffset = shadowOffset
+        self.shadowRadius = shadowRadius
+        self.shadowOpacity = shadowOpacity
+    }
+    
     public func activate() {
         T.appearance().backgroundColor = backgroundColor
         T.appearance().cornerRadius = cornerRadius ?? 0
@@ -371,6 +544,27 @@ public struct CollectionViewCellAssets<T: ThemableCollectionViewCell>: ThemeAsse
     var shadowOffset: CGSize?
     var shadowRadius: CGFloat?
     var shadowOpacity: Float?
+    
+    public init(
+        backgroundColor: UIColor? = nil,
+        cornerRadius: CGFloat? = nil,
+        borderColor: UIColor? = nil,
+        borderWidth: CGFloat? = nil,
+        shadowColor: UIColor? = nil,
+        shadowOffset: CGSize? = nil,
+        shadowRadius: CGFloat? = nil,
+        shadowOpacity: Float? = nil,
+        tintColor: Float? = nil
+    ) {
+        self.backgroundColor = backgroundColor
+        self.cornerRadius = cornerRadius
+        self.borderColor = borderColor
+        self.borderWidth = borderWidth
+        self.shadowColor = shadowColor
+        self.shadowOffset = shadowOffset
+        self.shadowRadius = shadowRadius
+        self.shadowOpacity = shadowOpacity
+    }
     
     public func activate() {
         T.appearance().backgroundColor = backgroundColor
