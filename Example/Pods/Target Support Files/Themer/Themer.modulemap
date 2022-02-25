@@ -1,0 +1,6 @@
+framework module Themer {
+  umbrella header "Themer-umbrella.h"
+
+  export *
+  module * { export * }
+}

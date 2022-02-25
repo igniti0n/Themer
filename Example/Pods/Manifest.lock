@@ -1,0 +1,16 @@
+PODS:
+  - Themer (0.1.0)
+
+DEPENDENCIES:
+  - Themer (from `../`)
+
+EXTERNAL SOURCES:
+  Themer:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  Themer: 2820ffaaa37023d6daf7984cd3a552280b6f2f66
+
+PODFILE CHECKSUM: d41bb8c9b3840647328d0f55fdf14928384614b5
+
+COCOAPODS: 1.11.2
