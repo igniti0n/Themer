@@ -1,0 +1,13 @@
+use_frameworks!
+
+platform :ios, '9.0'
+
+target 'Themer_Example' do
+  pod 'Themer', :path => '../'
+
+  target 'Themer_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
