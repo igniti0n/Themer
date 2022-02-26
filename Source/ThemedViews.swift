@@ -116,9 +116,11 @@ public class ThemedSwitch: ThemableSwitch {}
 // MARK: - UIImageView -
 
 open class ThemableImageView: UIImageView {
+    // MARK: - Properties
     var lightImage: UIImage?
     var darkImage: UIImage?
     
+    // MARK: - Init
     public init(namedTinted: String) {
         super.init(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
         let assetImage = UIImage(named: namedTinted)
@@ -142,7 +144,9 @@ open class ThemableImageView: UIImageView {
         super.init(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
         lightImage = UIImage(named: imageLight)
         darkImage = UIImage(named: imageDark)
-        ThemeManager.shared.addDelegate(self)
+        let nc = NotificationCenter.default
+        nc.addObserver(self, selector: #selector(willChageTheme), name: Themer.notificationName, object: nil)
+        //Themer.shared.addDelegate(self)
         setImageToCurretTheme()
     }
     
@@ -150,17 +154,12 @@ open class ThemableImageView: UIImageView {
         super.init(coder: coder)
     }
     
-    func setImageToCurretTheme() {
-        let isDark = ThemeManager.shared.currentThemeType == .dark
-        if isDark {
-            assert(darkImage != nil)
-            self.image =  darkImage
-        } else {
-            assert(lightImage != nil)
-            self.image = lightImage
-        }
+    // MARK: - Deinit
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
     
+    // MARK: - Computed properties
     @objc dynamic var cornerRadius: CGFloat {
         get { self.cornerRadius }
         set(newValue) { layer.cornerRadius = newValue }
@@ -201,11 +200,21 @@ open class ThemableImageView: UIImageView {
         get { self.shadowOpacity }
         set(newValue) { layer.shadowOpacity = newValue }
     }
-}
-
-// TODO:  See if this is neccessary
-extension ThemableImageView: ThemeManagerDelegateProtocol {
-    public func willChageTheme(to theme: AppThemeType) {
+    
+    
+    // MARK: - Private methods
+    private func setImageToCurretTheme() {
+        let isDark = Themer.shared.currentlyAppliedTheme == .dark
+        if isDark {
+            assert(darkImage != nil)
+            self.image =  darkImage
+        } else {
+            assert(lightImage != nil)
+            self.image = lightImage
+        }
+    }
+    
+    @objc private func willChageTheme() {
         setImageToCurretTheme()
     }
 }

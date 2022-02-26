@@ -7,15 +7,24 @@
 //
 
 import UIKit
+import Themer
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    let rootCoordinator = RootCoordinator()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        window = UIWindow()
+        window?.rootViewController = rootCoordinator.start()
+        window?.makeKeyAndVisible()
+        
+        Themer.shared.setup(lightTheme: LightTheme(), darkTheme: DarkTheme())
+        // ThemeManager.shared.setup(withUniversalTheme: DarkTheme())
+        Themer.shared.addCustomAssets(to: .dark, asset: ViewAssets<CustomThemedView>(color: .systemBrown))
+        Themer.shared.apply(.dark)
         return true
     }
 

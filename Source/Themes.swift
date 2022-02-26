@@ -17,6 +17,13 @@ public protocol ApplicationTheme {
     var theme: Theme { get }
 }
 
+/**
+Used  to  represent a single theme. Holding `assets` that represent a theme's button, labels,, navigation bar... This  assets are applied to
+ `ThemedButton`, `ThemedLabel`, `ThemedNavigationBar`...,   and can be used in your view's by replacing UIKit view classes
+ with themed ones. So, instead UIButton use ThemedButton, and so on.
+ 
+ Uses
+*/
 public class Theme: ThemeProtocol {
     // MARK: - Properties -
     public var assets: ThemeAssets
@@ -27,15 +34,12 @@ public class Theme: ThemeProtocol {
         self.assets = assets
         self.extend = `extension`
     }
-}
-
-// MARK: - Public methods -
-extension Theme {
+    
     func addCustomAsset(_ asset: ThemeAsset) {
         assets.addCustomAsset(asset)
     }
     
-    func copyWith(_ newAsssets: ThemeAssets) -> Theme {
+    public func copyWith(_ newAsssets: ThemeAssets) -> Theme {
         return Theme(
             assets: ThemeAssets(
                 labelAssets: self.assets.labelAssets.copyWith(newAssets: newAsssets.labelAssets),

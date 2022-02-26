@@ -27,7 +27,7 @@ class TabBarViewController: UITabBarController {
     }
     
     func setupProfile() {
-        let pc = ProfileCoordinator(parent: self)
+        let pc = ProfileCoordinator()
         coordinators.append(pc)
         let vc = pc.start()
         vc.tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 1)

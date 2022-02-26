@@ -72,6 +72,5 @@ public extension ThemeAssets {
     mutating func addCustomAsset(_ asset: ThemeAsset) {
         assets.append(asset)
         asset.activate()
-        
     }
 }

@@ -14,7 +14,7 @@ import UIKit
 final class ProfileViewController: UIViewController {
     // MARK: - Properties
     private let mainView = ProfileView()
-    private let tableDataSource = ["hello","što sad","sad zovi","HAK"]
+    private let tableDataSource = ["hello","hi","some data","I am themed cell"]
     
     // MARK: - Lifecycle
     override func loadView() {
@@ -29,11 +29,11 @@ final class ProfileViewController: UIViewController {
     }
 }
 
-extension ProfileViewController: UITableViewDelegate {
-    
-}
 
-// MARK: - Public methods
+// MARK: - UITableViewDelegate methods
+extension ProfileViewController: UITableViewDelegate {}
+
+// MARK: - UITableViewDataSource methods
 extension ProfileViewController:  UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         tableDataSource.count
@@ -41,7 +41,7 @@ extension ProfileViewController:  UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: ProfileTableViewCell.reuseIdentifier) as! ProfileTableViewCell
-        cell.updateCell(with: "hej" + tableDataSource[indexPath.row])
+        cell.updateCell(with: tableDataSource[indexPath.row])
         return cell
     }
 }

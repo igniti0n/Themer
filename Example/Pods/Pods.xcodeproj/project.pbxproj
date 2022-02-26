@@ -18,11 +18,10 @@
 		A52066A327C9788B00701028 /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = A520669C27C9788B00701028 /* Assets.swift */; };
 		A52066A427C9788B00701028 /* ThemeAssets.swift in Sources */ = {isa = PBXBuildFile; fileRef = A520669D27C9788B00701028 /* ThemeAssets.swift */; };
 		A52066A527C9788B00701028 /* Themes.swift in Sources */ = {isa = PBXBuildFile; fileRef = A520669E27C9788B00701028 /* Themes.swift */; };
-		A52066A627C9788B00701028 /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A520669F27C9788B00701028 /* ThemeManager.swift */; };
+		A52066A627C9788B00701028 /* Themer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A520669F27C9788B00701028 /* Themer.swift */; };
 		A52066A727C9788B00701028 /* UIWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52066A127C9788B00701028 /* UIWindow.swift */; };
 		A52066A827C9788B00701028 /* ThemedViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52066A227C9788B00701028 /* ThemedViews.swift */; };
 		F2F93CE400F6419F06ED9A5E26E07B37 /* Pods-Themer_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 476A452BAC29A6D0ADA51E918B185E5C /* Pods-Themer_Tests-dummy.m */; };
-		F5E001F36C0B2FFD77F0817003438EA4 /* ReplaceMe.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA59F9088CDC44150F1A709E6E56775D /* ReplaceMe.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,7 +63,7 @@
 		A520669C27C9788B00701028 /* Assets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
 		A520669D27C9788B00701028 /* ThemeAssets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeAssets.swift; sourceTree = "<group>"; };
 		A520669E27C9788B00701028 /* Themes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Themes.swift; sourceTree = "<group>"; };
-		A520669F27C9788B00701028 /* ThemeManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeManager.swift; sourceTree = "<group>"; };
+		A520669F27C9788B00701028 /* Themer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Themer.swift; sourceTree = "<group>"; };
 		A52066A127C9788B00701028 /* UIWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIWindow.swift; sourceTree = "<group>"; };
 		A52066A227C9788B00701028 /* ThemedViews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemedViews.swift; sourceTree = "<group>"; };
 		A8B1CD9FD42188FAD684B2AF9680850C /* Pods-Themer_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Themer_Example.modulemap"; sourceTree = "<group>"; };
@@ -72,7 +71,6 @@
 		B2DD5533417CBEEDACD5C8E5828FE3D9 /* Themer.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = Themer.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		C589C34876D2BED26F2B43CACFFEB1A2 /* Pods-Themer_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Themer_Tests.modulemap"; sourceTree = "<group>"; };
 		C77ACE34F672A53A84F20974DCF10BFE /* Pods-Themer_Tests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Themer_Tests-Info.plist"; sourceTree = "<group>"; };
-		CA59F9088CDC44150F1A709E6E56775D /* ReplaceMe.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ReplaceMe.swift; path = Themer/Classes/ReplaceMe.swift; sourceTree = "<group>"; };
 		CADFB7994083B5A5579AE5CD27AAA85C /* Themer-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Themer-dummy.m"; sourceTree = "<group>"; };
 		D2BE137BD8161CCEB1693522CB80FEB5 /* Pods-Themer_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Themer_Example-frameworks.sh"; sourceTree = "<group>"; };
 		D704244EFF761FFC076767A349AF9092 /* Themer-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Themer-prefix.pch"; sourceTree = "<group>"; };
@@ -152,7 +150,7 @@
 				A520669C27C9788B00701028 /* Assets.swift */,
 				A520669D27C9788B00701028 /* ThemeAssets.swift */,
 				A520669E27C9788B00701028 /* Themes.swift */,
-				A520669F27C9788B00701028 /* ThemeManager.swift */,
+				A520669F27C9788B00701028 /* Themer.swift */,
 				A52066A027C9788B00701028 /* Extensions */,
 				A52066A227C9788B00701028 /* ThemedViews.swift */,
 			);
@@ -196,7 +194,6 @@
 			isa = PBXGroup;
 			children = (
 				A520669B27C9788B00701028 /* Source */,
-				CA59F9088CDC44150F1A709E6E56775D /* ReplaceMe.swift */,
 				A94B383C85BD97D57E0CE81FC1774DB2 /* Pod */,
 				ABF7C714BCC91C332842B26C50AC55FE /* Support Files */,
 			);
@@ -403,12 +400,11 @@
 			files = (
 				A52066A727C9788B00701028 /* UIWindow.swift in Sources */,
 				A52066A827C9788B00701028 /* ThemedViews.swift in Sources */,
-				F5E001F36C0B2FFD77F0817003438EA4 /* ReplaceMe.swift in Sources */,
 				3D3CF0745E81F50CAFC511B210BAFA56 /* Themer-dummy.m in Sources */,
 				A52066A427C9788B00701028 /* ThemeAssets.swift in Sources */,
 				A52066A527C9788B00701028 /* Themes.swift in Sources */,
 				A52066A327C9788B00701028 /* Assets.swift in Sources */,
-				A52066A627C9788B00701028 /* ThemeManager.swift in Sources */,
+				A52066A627C9788B00701028 /* Themer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

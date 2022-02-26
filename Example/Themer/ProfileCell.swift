@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 import Themer
 
-final class ProfileTableViewCell: ThemableTableViewCell {
+final class ProfileTableViewCell: ThemedTableViewCell {
     static let reuseIdentifier = "ProfileTableViewCell"
     private lazy var label = UILabel()
     
@@ -27,7 +27,6 @@ final class ProfileTableViewCell: ThemableTableViewCell {
 // MARK: - Public meethods
 extension ProfileTableViewCell {
     func updateCell(with text: String) {
-        print("Updating cell with: ", text)
         label.text = text
     }
 }
@@ -40,8 +39,10 @@ private extension ProfileTableViewCell {
     
     func setupLabel() {
         addSubview(label)
-//        label.snp.makeConstraints { make in
-//            make.centerY.centerX.equalToSuperview()
-//        }
+        label.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            label.centerYAnchor.constraint(equalTo: centerYAnchor),
+            label.centerXAnchor.constraint(equalTo: centerXAnchor)
+        ])
     }
 }

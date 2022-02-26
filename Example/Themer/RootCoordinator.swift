@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class RootCoorddinator: Coordinator {
+class RootCoordinator: Coordinator {
     var childCoordinator: Coordinator?
     
     func start() -> UIViewController {

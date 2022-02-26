@@ -47,13 +47,9 @@ class DarkTheme: ApplicationTheme {
                 font: .systemFont(ofSize: 28),
                 cornerRadius: 40,
                 borderColor: .systemBlue,
-                borderWidth: 2,
-                shadowColor: .systemBlue,
-                shadowOffset: CGSize(width: 10, height: 20),
-                shadowRadius: 8,
-                shadowOpacity: 0.8
+                borderWidth: 2
             ))) {
-                ThemeManager.shared.addCustomAssets(to: .dark, asset: ButtonAssets<CustomThemedButton>(buttonColor: .systemBlue))
+                Themer.shared.addCustomAssets(to: .dark, asset: ButtonAssets<CustomThemedButton>(buttonColor: .systemBlue))
                 CustomThemedButton.appearance(whenContainedInInstancesOf: [CustomThemedView.self]).backgroundColor = .systemBrown
             }
 }
@@ -83,12 +79,12 @@ class LightTheme: ApplicationTheme {
                     backgroundColor: .blue,
                     cornerRadius: 10,
                     borderColor: .systemTeal,
-                    borderWidth: 15,
+                    borderWidth: 4,
                     shadowOpacity: 0.8,
                     tintColor: .systemTeal
                 ),
                 navigationBarAssets: NavigationBarAssets(
-                    color: .systemBrown,
+                    color: .cyan,
                     font: .systemFont(ofSize: 28),
                     cornerRadius: 4,
                     borderColor: .systemPurple,
@@ -97,29 +93,29 @@ class LightTheme: ApplicationTheme {
                     shadowOffset: CGSize(width: 10, height: 20),
                     shadowRadius: 8
                 ))) {
-                    ThemeManager.shared.addCustomAssets(to: .light, asset: ButtonAssets<CustomThemedButton>(buttonColor: .orange))
+                    Themer.shared.addCustomAssets(to: .light, asset: ButtonAssets<CustomThemedButton>(buttonColor: .orange))
                     CustomThemedButton.appearance(whenContainedInInstancesOf: [CustomThemedView.self]).backgroundColor = .systemRed
                 }
-    //    var theme: Theme = DarkTheme().theme.copyWith(ThemeAssets(
-    //        labelAssets: LabelAssets(
-    //            color: .blue
-    //        ),
-    //        buttonAssets: ButtonAssets(
-    //            buttonColor: .blue
-    //        ),
-    //        imageViewAssets: ImageViewAssets(
-    //            tintColor: .yellow
-    //        ),
-    //        navigationBarAssets: NavigationBarAssets(
-    //            color: .systemMint,
-    //            cornerRadius: 4,
-    //            borderColor: .systemPurple,
-    //            borderWidth: 2,
-    //            shadowColor: .systemTeal,
-    //            shadowOffset: CGSize(width: 10, height: 20),
-    //            shadowRadius: 8,
-    //            font: .systemFont(ofSize: 28)
-    //        )))
+//        var theme: Theme = DarkTheme().theme.copyWith(ThemeAssets(
+//            labelAssets: LabelAssets(
+//                color: .blue
+//            ),
+//            buttonAssets: ButtonAssets(
+//                buttonColor: .blue
+//            ),
+//            imageViewAssets: ImageViewAssets(
+//                tintColor: .yellow
+//            ),
+//            navigationBarAssets: NavigationBarAssets(
+//                color: .darkGray,
+//                font: .systemFont(ofSize: 28),
+//                cornerRadius: 4,
+//                borderColor: .systemPurple,
+//                borderWidth: 2,
+//                shadowColor: .systemTeal,
+//                shadowOffset: CGSize(width: 10, height: 20),
+//                shadowRadius: 8
+//            )))
 }
 
 class CustomThemedButton: ThemableButton {

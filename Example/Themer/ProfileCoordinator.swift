@@ -13,13 +13,10 @@ import UIKit
 import Themer
 
 final class ProfileCoordinator: Coordinator {
-    var childCoordinator: Coordinator?
     let navigationController: UINavigationController?
-    let parent: UIViewController?
 
-    init(parent: UIViewController?) {
+    init() {
         self.navigationController = UINavigationController(navigationBarClass: ThemedNavigationBar.self, toolbarClass: nil)
-        self.parent = parent
     }
 }
 
