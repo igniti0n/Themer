@@ -8,10 +8,17 @@
 import Foundation
 import UIKit
 
+/// Describes what an `ThemeAsset` should contain.
+/// Note
 public protocol ThemeAsset {
+    /// Activates `ThemeAsset` for the `UIAppearance` of the attached view.
     func activate()
 }
 
+/// Represents assets of a theme.
+///
+///  Comes with default assets like `LabelAssets` that apply for its attached class `ThemedLabel`.
+///  Also, holds any added assets attached to custom classes.
 public struct ThemeAssets {
     // MARK: - Properties -
     var viewAssets: ViewAssets<ThemedView>
@@ -27,6 +34,19 @@ public struct ThemeAssets {
     private var assets: [ThemeAsset] = []
     
     // MARK: - Init -
+    
+    /// Creates an instance with the provided assets.
+    ///
+    /// - Parameters:
+    ///   - labelAssets:               Optional  assets applied to `ThemedLabel`
+    ///   - buttonAssets:              Optional  assets applied to `ThemedButton`
+    ///   - imageViewAssets:           Optional  assets applied to `ThemedImageView`
+    ///   - switchAssets:              Optional  assets applied to `ThemedSwitch`
+    ///   - tableViewAssets:           Optional  assets applied to `ThemedTableView`
+    ///   - tableViewCellAssets:       Optional  assets applied to `ThemedTableViewCell`
+    ///   - collectionViewAssets:      Optional  assets applied to `ThemedCollectionView`
+    ///   - collectionViewCellAssets:  Optional  assets applied to `ThemedCollectionViewCell`
+    ///   - navigationBarAssets:       Optional  assets applied to `ThemedNavigationBar`
     public init(viewAssets: ViewAssets<ThemedView> = ViewAssets(),
          labelAssets: LabelAssets<ThemedLabel> = LabelAssets(),
          buttonAssets: ButtonAssets<ThemedButton> = ButtonAssets(),
@@ -52,7 +72,7 @@ public struct ThemeAssets {
 }
 
 // MARK: - Public methods -
-public extension ThemeAssets {
+extension ThemeAssets {
     func activateAssets() {
         viewAssets.activate()
         buttonAssets.activate()

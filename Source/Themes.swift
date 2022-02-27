@@ -8,11 +8,12 @@
 import Foundation
 import UIKit
 
-public protocol ThemeProtocol {
+protocol ThemeProtocol {
     var assets: ThemeAssets { get }
     var extend: (() -> Void)? { get }
 }
 
+/// Protocol describing what a created theme should contain.
 public protocol ApplicationTheme {
     var theme: Theme { get }
 }
@@ -22,23 +23,36 @@ Used  to  represent a single theme. Holding `assets` that represent a theme's bu
  `ThemedButton`, `ThemedLabel`, `ThemedNavigationBar`...,   and can be used in your view's by replacing UIKit view classes
  with themed ones. So, instead UIButton use ThemedButton, and so on.
  
- Uses
+ Enabels you to use `extend` callback. Which is used to extend some thing on the theme. For ex, when a ThemedButton is inside ThemedView, make its color blue.
 */
 public class Theme: ThemeProtocol {
+    
     // MARK: - Properties -
+    
+    /// Represent a theme's button, labels,, navigation bar... This  assets are applied to
+    /// `ThemedButton`, `ThemedLabel`, `ThemedNavigationBar`...,   and can be used in your view's by replacing UIKit view classes
+    /// with themed ones. So, instead UIButton use ThemedButton, and so on.
     public var assets: ThemeAssets
+    
+    /// Used to extend some thing on the theme. For ex, when a ThemedButton is inside ThemedView, make its color blue.
     public var extend: (() -> Void)?
     
-    // MARK: - Init-
+    // MARK: - Init -
+    
+    /// Creates a `Theme` from a `ThemeAssets` and other parameters.
+       ///
+       /// - Parameters:
+       ///   - assets:                  Assts that describe this theme.
+       ///   - extension:               Convinience closure for extensing theme apperance.
     public init(assets: ThemeAssets, extension: (() -> Void)? = nil) {
         self.assets = assets
         self.extend = `extension`
     }
     
-    func addCustomAsset(_ asset: ThemeAsset) {
-        assets.addCustomAsset(asset)
-    }
-    
+    /// Creates a copy of this `Theme` with additional `ThemeAssets`.
+       ///
+       /// - Parameters:
+       ///   - newAssets:                  Additional assets to apply to newly created theme.
     public func copyWith(_ newAsssets: ThemeAssets) -> Theme {
         return Theme(
             assets: ThemeAssets(
@@ -54,6 +68,10 @@ public class Theme: ThemeProtocol {
               )) {
                   self.extend?()
                 }
+    }
+    
+    func addCustomAsset(_ asset: ThemeAsset) {
+        assets.addCustomAsset(asset)
     }
 }
 

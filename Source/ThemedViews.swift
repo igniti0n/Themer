@@ -10,6 +10,9 @@ import UIKit
 
 // MARK: - UIView -
 
+/// Provides ways to  update properties on an `UIAppearance` of a  `UIView`, with all its normal functionalities.
+///
+///  - Note: Inherit from this class in order to be able eto apply `ViewAssets` to that class.
 open class ThemableView: UIView {
     @objc dynamic var cornerRadius: CGFloat {
         get { self.cornerRadius }
@@ -53,10 +56,17 @@ open class ThemableView: UIView {
     }
 }
 
+/// Default class for a view with `ViewAssets` of a theme being applied to it.
+///
+///  - Note: `ViewAssets` from a provided `ThemeAssets` of a theme are being applied to this  view.
+///
 public class ThemedView: ThemableView {}
 
 // MARK: - UIButton -
 
+/// Provides ways to  update properties on an `UIAppearance` of a  `UIButton`, with all its normal functionalities.
+///
+///  - Note: Inherit from this class in order to be able eto apply `ButtonAssets` to that class.
 open class ThemableButton: UIButton {
     @objc dynamic var cornerRadius: CGFloat {
         get { self.cornerRadius }
@@ -99,22 +109,45 @@ open class ThemableButton: UIButton {
         set(newValue) { layer.shadowOpacity = newValue }
     }
 }
+
+/// Default class for a view with `ButtonAssets` of a theme being applied to it.
+///
+///  - Note: `ButtonAssets` from a provided `ThemeAssets` of a theme are being applied to this  view.
+///
 public class ThemedButton: ThemableButton {
 }
 
 // MARK: - UILabel -
 
+/// Provides ways to  update properties on an `UIAppearance` of a  `UILabel`, with all its normal functionalities.
+///
+///  - Note: Inherit from this class in order to be able eto apply `LabelAssets` to that class.
 open class ThemableLabel: UILabel {}
+
+/// Default class for a view with `LabelAssets` of a theme being applied to it.
+///
+///  - Note: `LabelAssets` from a provided `LabelAssets` of a theme are being applied to this  view.
+///
 public class ThemedLabel: ThemableLabel {}
 
 // MARK: - UISwitch -
 
-open class ThemableSwitch: UISwitch {
-}
+/// Provides ways to  update properties on an `UIAppearance` of a  `UISwitch`, with all its normal functionalities.
+///
+///  - Note: Inherit from this class in order to be able eto apply `SwitchAssets` to that class.
+open class ThemableSwitch: UISwitch {}
+
+/// Default class for a view with `SwitchAssets` of a theme being applied to it.
+///
+///  - Note: `SwitchAssets` from a provided `SwitchAssets` of a theme are being applied to this  view.
+///
 public class ThemedSwitch: ThemableSwitch {}
 
 // MARK: - UIImageView -
 
+/// Provides ways to  update properties on an `UIAppearance` of a  `UIImageView`, with all its normal functionalities.
+///
+///  - Note: Inherit from this class in order to be able eto apply `ImageViewAssets` to that class.
 open class ThemableImageView: UIImageView {
     // MARK: - Properties
     var lightImage: UIImage?
@@ -219,12 +252,20 @@ open class ThemableImageView: UIImageView {
     }
 }
 
+/// Default class for a view with `ImageViewAssets` of a theme being applied to it.
+///
+///  - Note: `ImageViewAssets` from a provided `ImageViewAssets` of a theme are being applied to this  view.
+///
 public class ThemedImageView: ThemableImageView {
     
 }
 
 // MARK: - UITableView -
 
+/// Provides ways to  update properties on an `UIAppearance` of a  `UITableView`, with all its normal functionalities.
+///
+///  - Note: Inherit from this class in order to be able eto apply `TableViewAssets` to that class.
+///
 open class ThemableTableView: UITableView {
     @objc dynamic var cornerRadius: CGFloat {
         get { self.cornerRadius }
@@ -267,12 +308,19 @@ open class ThemableTableView: UITableView {
         set(newValue) { layer.shadowOpacity = newValue }
     }
 }
-public class ThemedTableView: ThemableTableView {
-    
-}
+
+/// Default class for a view with `TableViewAssets` of a theme being applied to it.
+///
+///  - Note: `TableViewAssets` from a provided `TableViewAssets` of a theme are being applied to this  view.
+///
+public class ThemedTableView: ThemableTableView {}
 
 // MARK: - UITableViewCell -
 
+/// Provides ways to  update properties on an `UIAppearance` of a  `UITableViewCell`, with all its normal functionalities.
+///
+///  - Note: Inherit from this class in order to be able eto apply `TableViewCellAssets` to that class.
+///
 open class ThemableTableViewCell: UITableViewCell {
     @objc dynamic var cornerRadius: CGFloat {
         get { self.cornerRadius }
@@ -315,13 +363,20 @@ open class ThemableTableViewCell: UITableViewCell {
         set(newValue) { layer.shadowOpacity = newValue }
     }
 }
-open class ThemedTableViewCell: ThemableTableViewCell {
-    
-}
+
+/// Default class for a view with `TableViewCellAssets` of a theme being applied to it.
+///
+///  - Note: `TableViewCellAssets` from a provided `TableViewCellAssets` of a theme are being applied to this  view.
+///
+open class ThemedTableViewCell: ThemableTableViewCell {}
 
 
 // MARK: - UICollectionView -
 
+/// Provides ways to  update properties on an `UIAppearance` of a  `UICollectionView`, with all its normal functionalities.
+///
+///  - Note: Inherit from this class in order to be able eto apply `CollectionViewAssets` to that class.
+///
 open class ThemableCollectionView: UICollectionView {
     @objc dynamic var cornerRadius: CGFloat {
         get { self.cornerRadius }
@@ -365,10 +420,18 @@ open class ThemableCollectionView: UICollectionView {
     }
 }
 
+/// Default class for a view with `CollectionViewAssets` of a theme being applied to it.
+///
+///  - Note: `CollectionViewAssets` from a provided `CollectionViewAssets` of a theme are being applied to this  view.
+///
 public  class ThemedCollectionView: ThemableCollectionView { }
 
 // MARK: - UICollectionViewCell -
 
+/// Provides ways to  update properties on an `UIAppearance` of a  `UICollectionViewCell`, with all its normal functionalities.
+///
+///  - Note: Inherit from this class in order to be able eto apply `CollctionViewCellAssets` to that class.
+///
 open class ThemableCollectionViewCell: UICollectionViewCell {
     @objc dynamic var cornerRadius: CGFloat {
         get { self.cornerRadius }
@@ -411,11 +474,19 @@ open class ThemableCollectionViewCell: UICollectionViewCell {
         set(newValue) { layer.shadowOpacity = newValue }
     }
 }
-public class ThemedCollectionViewCell: ThemableCollectionViewCell {
-    
-}
+
+/// Default class for a view with `CollctionViewCellAssets` of a theme being applied to it.
+///
+///  - Note: `CollctionViewCellAssets` from a provided `CollctionViewCellAssets` of a theme are being applied to this  view.
+///
+public class ThemedCollectionViewCell: ThemableCollectionViewCell {}
+
 // MARK: - UINavigationBar -
 
+/// Provides ways to  update properties on an `UIAppearance` of a  `UINavigationBar`, with all its normal functionalities.
+///
+///  - Note: Inherit from this class in order to be able eto apply `NavigationBarAssets` to that class.
+///
 open class ThemeableNavigationBar: UINavigationBar {
     @objc dynamic var titleFont: UIFont? {
         get { self.titleTextAttributes?[.font] as? UIFont ?? nil}
@@ -470,4 +541,9 @@ open class ThemeableNavigationBar: UINavigationBar {
         set(newValue) { self.layer.shadowOpacity = newValue }
     }
 }
+
+/// Default class for a view with `NavigationBarAssets` of a theme being applied to it.
+///
+///  - Note: `NavigationBarAssets` from a provided `NavigationBarAssets` of a theme are being applied to this  view.
+///
 public class ThemedNavigationBar: ThemeableNavigationBar {}

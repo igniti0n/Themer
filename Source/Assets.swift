@@ -10,6 +10,7 @@ import UIKit
 
 // MARK: - ViewAssets
 
+/// Assets describing appearance of a `ThemableView`
 public struct ViewAssets<T: ThemableView>: ThemeAsset {    
     var color: UIColor?
     var cornerRadius: CGFloat?
@@ -40,6 +41,7 @@ public struct ViewAssets<T: ThemableView>: ThemeAsset {
         self.shadowOpacity = shadowOpacity
     }
     
+    /// Activates assets by applying them to the `ThemableView`appearance
     public func activate() {
         T.appearance().backgroundColor = color
         T.appearance().cornerRadius = cornerRadius ?? 0
@@ -70,7 +72,8 @@ public struct ViewAssets<T: ThemableView>: ThemeAsset {
 
 // MARK: - NavigationBar
 
-public struct NavigationBarAssets<T: ThemedNavigationBar>: ThemeAsset {
+/// Assets describing appearance of a `ThemableNavigationBar`
+public struct NavigationBarAssets<T: ThemeableNavigationBar>: ThemeAsset {
     var color: UIColor?
     var font: UIFont?
     var cornerRadius: CGFloat?
@@ -103,6 +106,7 @@ public struct NavigationBarAssets<T: ThemedNavigationBar>: ThemeAsset {
         self.shadowOpacity = shadowOpacity
     }
     
+    /// Activates assets by applying them to the `ThemableNavigationBar`appearance
     public func activate() {
         T.appearance().titleFont = font
         T.appearance().backgroundColor = color
@@ -136,6 +140,7 @@ public struct NavigationBarAssets<T: ThemedNavigationBar>: ThemeAsset {
 
 // MARK: - LabelAssets
 
+/// Assets describing appearance of a `ThemableLabel`
 public struct LabelAssets<T: ThemableLabel>: ThemeAsset {
     var color: UIColor?
     var font: UIFont?
@@ -151,6 +156,7 @@ public struct LabelAssets<T: ThemableLabel>: ThemeAsset {
         self.backgroundColor = backgroundColor
     }
     
+    /// Activates assets by applying them to the `ThemableLabel`appearance
     public func activate() {
         T.appearance().textColor = color
         T.appearance().font = font
@@ -171,6 +177,7 @@ public struct LabelAssets<T: ThemableLabel>: ThemeAsset {
 
 // MARK: - ButtonAssets
 
+/// Assets describing appearance of a `ThemableButton`
 public struct ButtonAssets<T: ThemableButton>: ThemeAsset {
     var buttonColor: UIColor?
     var titleColor: UIColor?
@@ -207,6 +214,7 @@ public struct ButtonAssets<T: ThemableButton>: ThemeAsset {
         self.shadowOpacity = shadowOpacity
     }
     
+    /// Activates assets by applying them to the `ThemableButton`appearance
     public func activate() {
         T.appearance().backgroundColor = buttonColor
         T.appearance().titleLabel?.font = font
@@ -241,6 +249,7 @@ public struct ButtonAssets<T: ThemableButton>: ThemeAsset {
 
 // MARK: - SwitchAssets
 
+/// Assets describing appearance of a `ThemableSwitch`
 public struct SwitchAssets<T: ThemableSwitch>: ThemeAsset {
     var backgroundColor: UIColor?
     var onImage: UIImage?
@@ -262,6 +271,7 @@ public struct SwitchAssets<T: ThemableSwitch>: ThemeAsset {
         self.onTintColor = onTintColor
     }
     
+    /// Activates assets by applying them to the `ThemableSwitch`appearance
     public func activate() {
         T.appearance().backgroundColor = backgroundColor
         T.appearance().onImage = onImage
@@ -286,6 +296,7 @@ public struct SwitchAssets<T: ThemableSwitch>: ThemeAsset {
 
 // MARK: - ImageViewAssets
 
+/// Assets describing appearance of a `ThemableImageView`
 public struct ImageViewAssets<T: ThemableImageView>: ThemeAsset {
     var backgroundColor: UIColor?
     var cornerRadius: CGFloat?
@@ -319,6 +330,7 @@ public struct ImageViewAssets<T: ThemableImageView>: ThemeAsset {
         self.tintColor = tintColor
     }
     
+    /// Activates assets by applying them to the `ThemableImageView`appearance
     public func activate() {
         T.appearance().backgroundColor = backgroundColor
         T.appearance().cornerRadius = cornerRadius ?? 0
@@ -354,6 +366,7 @@ public struct ImageViewAssets<T: ThemableImageView>: ThemeAsset {
 
 // MARK: - TableViewAssets
 
+/// Assets describing appearance of a `ThemableTableView`
 public struct TableViewAssets<T: ThemableTableView>: ThemeAsset {
     var backgroundColor: UIColor?
     var cornerRadius: CGFloat?
@@ -384,6 +397,7 @@ public struct TableViewAssets<T: ThemableTableView>: ThemeAsset {
         self.shadowOpacity = shadowOpacity
     }
     
+    /// Activates assets by applying them to the `ThemablTableView`appearance
     public func activate() {
         T.appearance().backgroundColor = backgroundColor
         T.appearance().cornerRadius = cornerRadius ?? 0
@@ -414,6 +428,7 @@ public struct TableViewAssets<T: ThemableTableView>: ThemeAsset {
 
 // MARK: - TableViewCellAssets
 
+/// Assets describing appearance of a `ThemableTableViewCell`
 public struct TableViewCellAssets<T: ThemableTableViewCell>: ThemeAsset {
     var backgroundColor: UIColor?
     var cornerRadius: CGFloat?
@@ -444,6 +459,7 @@ public struct TableViewCellAssets<T: ThemableTableViewCell>: ThemeAsset {
         self.shadowOpacity = shadowOpacity
     }
     
+    /// Activates assets by applying them to the `ThemableTableViewCell`appearance
     public func activate() {
         T.appearance().backgroundColor = backgroundColor
         T.appearance().cornerRadius = cornerRadius ?? 0
@@ -474,6 +490,7 @@ public struct TableViewCellAssets<T: ThemableTableViewCell>: ThemeAsset {
 
 // MARK: - CollectionViewAssets
 
+/// Assets describing appearance of a `ThemableCollectionView`
 public struct CollectionViewAssets<T: ThemableCollectionView>: ThemeAsset {
     var backgroundColor: UIColor?
     var cornerRadius: CGFloat?
@@ -505,6 +522,7 @@ public struct CollectionViewAssets<T: ThemableCollectionView>: ThemeAsset {
         self.shadowOpacity = shadowOpacity
     }
     
+    /// Activates assets by applying them to the `ThemableCollectionView`appearance
     public func activate() {
         T.appearance().backgroundColor = backgroundColor
         T.appearance().cornerRadius = cornerRadius ?? 0
@@ -535,6 +553,7 @@ public struct CollectionViewAssets<T: ThemableCollectionView>: ThemeAsset {
 
 // MARK: - TableViewCellAssets
 
+/// Assets describing appearance of a `ThemableCollectionViewCell`
 public struct CollectionViewCellAssets<T: ThemableCollectionViewCell>: ThemeAsset {
     var backgroundColor: UIColor?
     var cornerRadius: CGFloat?
@@ -566,6 +585,7 @@ public struct CollectionViewCellAssets<T: ThemableCollectionViewCell>: ThemeAsse
         self.shadowOpacity = shadowOpacity
     }
     
+    /// Activates assets by applying them to the `ThemableCollectionViewCell`appearance
     public func activate() {
         T.appearance().backgroundColor = backgroundColor
         T.appearance().cornerRadius = cornerRadius ?? 0
