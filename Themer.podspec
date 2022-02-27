@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
   s.name             = 'Themer'
   s.version          = '0.1.0'
-  s.summary          = 'A short description of Themer.'
+  s.summary          = 'Theme management solution in Swift'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -18,7 +18,7 @@ Pod::Spec.new do |s|
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 
   s.description      = <<-DESC
-TODO: Add long description of the pod here.
+"Provides elgant way to use light and dark themes or opt to whatever the system default is. Allows high customization of view components and puts all theming in one place."
                        DESC
 
   s.homepage         = 'https://github.com/igniti0n/Themer'
@@ -27,18 +27,13 @@ TODO: Add long description of the pod here.
   s.author           = { 'igniti0n' => 'ivanat735@gmail.com' }
   s.source           = { :git => 'https://github.com/igniti0n/Themer.git', :tag => s.version.to_s }
   s.social_media_url = 'https://twitter.com/ivanstajcer'
-  s.ios.deployment_target = '13.0'
-  s.source_files = 'Themer/Source/**/*'
-  s.swift_verson = "5.0"
-  s.platforms = {
-      "ios": "13.0"
-  }
   
-  # s.resource_bundles = {
-  #   'Themer' => ['Themer/Assets/*.png']
-  # }
+  s.ios.deployment_target = '13.0'
+  
+  s.source_files = 'Themer/Source/**/*'
+  
+  s.swift_versions = ['5.3', '5.4', '5.5']
+  
+  s.frameworks = 'UIKit'
 
-  # s.public_header_files = 'Pod/Classes/**/*.h'
-  #s.frameworks = 'UIKit', 'SnapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
 end
