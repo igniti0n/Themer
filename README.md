@@ -1,12 +1,10 @@
-# Themer
+# T̼̼̖̾͟͞h̨͚͚͖ͯ̒̄͗͞ḛ̡̰̳͓̥ͬ͋ͪͧm̰̰̹͚̙̂ͦ͗͠ḛ̡̰̳͓̥ͬ͋ͪͧṛ̣̬̫̍͌ͩ͟
 
-[![CI Status](https://img.shields.io/travis/igniti0n/Themer.svg?style=flat)](https://travis-ci.org/igniti0n/Themer)
 [![Version](https://img.shields.io/cocoapods/v/Themer.svg?style=flat)](https://cocoapods.org/pods/Themer)
 [![License](https://img.shields.io/cocoapods/l/Themer.svg?style=flat)](https://cocoapods.org/pods/Themer)
 [![Platform](https://img.shields.io/cocoapods/p/Themer.svg?style=flat)](https://cocoapods.org/pods/Themer)
 
-Themer enabels you to switch between light, dark and system default theme modes, gives you default themed classes of each view and allowing you define all assets (color, border color, font, border width...) for them, as well as giving you the option to make your own custom thmable views and their assets. It enables you to put less code in your view's by defining their looks from one place, as well as enabeling you to do
-quick changes to your UI easily.
+Themer enabels you to switch between light, dark and system default theme modes, gives you default themed classes of each view and allowing you define all assets (color, border color, font, border width...) for them, as well as giving you the option to make your own custom themed views and their assets. Moves code from your view by defining their looks from one place and makes changes to styling easy.
 
 ## Installation
 
@@ -27,12 +25,7 @@ pod 'Themer'
 
 ## How to use it
 
-Themer is straight forward to use, you setup your themes and apply whatever theme you want!
-Then, in your views, use themed versions.
-
-```swift
-let themedButton = ThemedButton()
-```
+Themer is straight forward to use, setup your themes and apply whatever theme you want!
 
 #### Setup a theme
 
@@ -63,6 +56,15 @@ class DarkTheme: ApplicationTheme {
                 borderWidth: 2
             )))
 }
+
+class LightTheme: ApplicationTheme {
+            var theme: Theme = DarkTheme().theme.copyWith(ThemeAssets(
+                labelAssets: LabelAssets(
+                    color: .blue
+                ),
+                navigationBarAssets: NavigationBarAssets(
+                    color: .darkGray
+                )))
 ```
 
 In your app, as soon as possible, setup your theme and apply it!
@@ -72,7 +74,7 @@ In your app, as soon as possible, setup your theme and apply it!
         Themer.shared.apply(.dark)
 ```
 
-Anywhre in your application, you can apply a theme and your app theme will change. You can also use animations
+Anywhere in your application, you can apply a theme and your app theme will change. You can also use animations
 when applying a theme.
 
 ```swift
@@ -81,7 +83,7 @@ when applying a theme.
 
 #### Use themed views in your view
 
-In your theme, all assets correspond to their themed versions. So, buttonAssets define how 'ThemedButton' looks like.
+In your theme, all assets correspond to their themed versions. So, 'ButtonAssets' define how 'ThemedButton' looks like.
 
 Instead
 
@@ -113,9 +115,11 @@ Out of the box, from Themer,  you get themed view like ThemedButton, ThemedNavig
 styles fo buttons in light and dark theme? No problem, just add custom themed and attach assets to them.
 
 #### Create a themed view, by extending one of the 'Themable' prefixed protocols.
+
 ```swift
         class CustomThemedButton: ThemableButton {}
 ```
+
 #### Add assets for that custom themed view to light, dark or both themes.
 
 ```swift
