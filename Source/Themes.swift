@@ -53,7 +53,7 @@ public class Theme: ThemeProtocol {
        ///
        /// - Parameters:
        ///   - newAssets:                  Additional assets to apply to newly created theme.
-    public func copyWith(_ newAsssets: ThemeAssets) -> Theme {
+    public func copyWith(_ newAsssets: ThemeAssets, extend: (() -> Void)? = nil) -> Theme {
         return Theme(
             assets: ThemeAssets(
                 labelAssets: self.assets.labelAssets.copyWith(newAssets: newAsssets.labelAssets),
@@ -67,6 +67,7 @@ public class Theme: ThemeProtocol {
                 navigationBarAssets: self.assets.navigationBarAssets.copyWith(newAssets: newAsssets.navigationBarAssets)
               )) {
                   self.extend?()
+                  extend?()
                 }
     }
     

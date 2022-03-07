@@ -74,66 +74,82 @@ public struct ViewAssets<T: ThemableView>: ThemeAsset {
 
 /// Assets describing appearance of a `ThemableNavigationBar`
 public struct NavigationBarAssets<T: ThemeableNavigationBar>: ThemeAsset {
-    var color: UIColor?
-    var font: UIFont?
-    var cornerRadius: CGFloat?
-    var borderColor: UIColor?
-    var borderWidth: CGFloat?
-    var shadowColor: UIColor?
-    var shadowOffset: CGSize?
-    var shadowRadius: CGFloat?
-    var shadowOpacity: Float?
+    var standardApprance: UINavigationBarAppearance
+    var scrollEdgeApperance: UINavigationBarAppearance?
+    var compactApperance: UINavigationBarAppearance?
     
+    private let standardClosure: ((inout UINavigationBarAppearance) -> Void)?
+    private let scrollClosure: ((inout UINavigationBarAppearance) -> Void)?
+    private let compactClosure: ((inout UINavigationBarAppearance) -> Void)?
+    
+    ///  Creates  'NavigationBarAssets' from three closures, used to deescribe NavigationBar apperance.
+    ///
+    /// - Parameters:
+    ///   - standardAppearance: Closure that provides a UINavigationBarAppearance instance, on which you can setup the NavigationBar's standdard appearance. The default value of this property is an appearance object containing the system's default appearance settings.
+    ///   - `scrollEdgeAppearance`: Closure that provides a UINavigationBarAppearance instance, on which you can setup the NavigationBar's scrollEdgeApperance  appearance. `The provided  instance is a copy of standardAppearance`,  so you can modify wwhat is changed based on the standardApperance. If the value of this property is nil,  the settings found in the standardAppearance property are used.
+    ///   - `compactApperance`:  Closure that provides a UINavigationBarAppearance instance, on which you can setup the NavigationBar's compactAppearance. `The provided  instance is a copy of standardAppearance`,  so you can modify wwhat is changed based on the standardApperance. If the value of this property is nil,  the settings found in the standardAppearance property are used.
     public init(
-        color: UIColor? = nil,
-        font: UIFont? = nil,
-        cornerRadius: CGFloat? = nil,
-        borderColor: UIColor? = nil,
-        borderWidth: CGFloat? = nil,
-        shadowColor: UIColor? = nil,
-        shadowOffset: CGSize? = nil,
-        shadowRadius: CGFloat? = nil,
-        shadowOpacity: Float? = nil
+        standardApprance: ((inout UINavigationBarAppearance) -> Void)? = nil,
+        scrollEdgeApperance: ((inout UINavigationBarAppearance) -> Void)? = nil,
+        compactApperance: ((inout UINavigationBarAppearance) -> Void)? = nil
     ) {
-        self.color = color
-        self.font = font
-        self.cornerRadius = cornerRadius
-        self.borderColor = borderColor
-        self.borderWidth = borderWidth
-        self.shadowColor = shadowColor
-        self.shadowOffset = shadowOffset
-        self.shadowRadius = shadowRadius
-        self.shadowOpacity = shadowOpacity
+        standardClosure = standardApprance
+        scrollClosure = scrollEdgeApperance
+        compactClosure = compactApperance
+        self.standardApprance = {
+            guard let standardApprance = standardApprance else {
+                return UINavigationBarAppearance()
+            }
+            var apperance = UINavigationBarAppearance()
+            standardApprance(&apperance)
+            return apperance
+        }()
+        self.scrollEdgeApperance = {
+            guard let scrollEdgeApperance = scrollEdgeApperance else {
+                return nil
+            }
+            var apperance = self.standardApprance.copy()
+            scrollEdgeApperance(&apperance)
+            return apperance
+        }()
+        self.compactApperance = {
+            guard let compactApperance = compactApperance else {
+                return nil
+            }
+            var apperance = self.standardApprance.copy()
+            compactApperance(&apperance)
+            return apperance
+        }()
     }
     
     /// Activates assets by applying them to the `ThemableNavigationBar`appearance
     public func activate() {
-        T.appearance().titleFont = font
-        T.appearance().backgroundColor = color
-        T.appearance().cornerRadius = cornerRadius ?? 0
-        T.appearance().borderColor = borderColor
-        T.appearance().borderWidth = borderWidth ?? 0
-        T.appearance().shadowColor = shadowColor
-        T.appearance().shadowOffset = shadowOffset ?? CGSize(width: 0, height: 0)
-        T.appearance().shadowRadius = shadowRadius ?? 0
-        T.appearance().shadowOpacity = shadowOpacity ?? 0
+        T.appearance().standardAppearance = standardApprance
+        T.appearance().scrollEdgeAppearance = scrollEdgeApperance
+        T.appearance().compactAppearance = compactApperance
+        
     }
     
-    func copyWith(newAssets: NavigationBarAssets<T>?) -> NavigationBarAssets<T> {
+    func copyWith(newAssets: NavigationBarAssets?) -> NavigationBarAssets<T> {
         guard let newAssets = newAssets else {
             return self
         }
-        return NavigationBarAssets(
-            color: newAssets.color ?? self.color,
-            font: newAssets.font ?? self.font,
-            cornerRadius: newAssets.cornerRadius ?? self.cornerRadius,
-            borderColor: newAssets.borderColor ?? self.borderColor,
-            borderWidth: newAssets.borderWidth ?? self.borderWidth,
-            shadowColor: newAssets.shadowColor ?? self.shadowColor,
-            shadowOffset: newAssets.shadowOffset ?? self.shadowOffset,
-            shadowRadius: newAssets.shadowRadius ?? self.shadowRadius,
-            shadowOpacity: newAssets.shadowOpacity ?? self.shadowOpacity
-        )
+        return NavigationBarAssets { appearance in
+            appearance = self.standardApprance.copy()
+            newAssets.standardClosure?(&appearance)
+        }
+        scrollEdgeApperance: { appearance in
+            if let current = self.scrollEdgeApperance {
+                appearance = current.copy()
+            }
+            newAssets.scrollClosure?(&appearance)
+        }
+        compactApperance: {appearance in
+            if let current = self.compactApperance {
+                appearance = current.copy()
+            }
+            newAssets.compactClosure?(&appearance)
+        }
     }
 }
 

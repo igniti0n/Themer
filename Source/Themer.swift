@@ -59,11 +59,24 @@ fileprivate class DetectingThemeChangesView: UIView {
     }
 }
 
+public protocol ThemerProtocol {
+    var currentlyAppliedTheme: AppThemeType { get set}
+    var currentThemeType: AppThemeType { get set }
+    func apply(_ theme: AppThemeType, withAnimation settings: ThemeAnimationSettings)
+    func apply(_ theme: AppThemeType)
+    func setup(withUniversalTheme theme: ApplicationTheme)
+    func setup(lightTheme: ApplicationTheme, darkTheme: ApplicationTheme)
+    func addCustomAssets(to theme: AttachableTheme, asset: ThemeAsset)
+    
+}
+
+
 /**
 Used  for  `any theme related operations`. Enables applying a  theme, provides theme change  notification trough NotificationCenter,
 enables adding custom assets fot any ThemeAsset.
 */
-public class Themer {
+public class Themer: ThemerProtocol {
+    
     // MARK: - Properties -
     
     /// Single instance of `Themer`
@@ -77,7 +90,6 @@ public class Themer {
     
     /// Is current theme mode `light`, `dark` or `system default`
     public var currentThemeType: AppThemeType = .systemDefault
-    
     private var animationSettings: ThemeAnimationSettings?
     private var lightTheme: ApplicationTheme?
     private var darkTheme: ApplicationTheme?
@@ -105,6 +117,7 @@ public class Themer {
         }
     }
 
+    // MARK: - Init -
     private init() {}
 }
 
@@ -151,7 +164,7 @@ public extension Themer {
         lightTheme = theme
         darkTheme = theme
     }
-    
+
     /// Sets up the application to have light and dark theme.
     ///
     /// - Parameters:
@@ -201,14 +214,14 @@ private extension Themer {
         applyTheme(to: darkTheme.theme)
     }
     
-    func applyTheme(to theme: ThemeProtocol, app: UIApplication = UIApplication.shared) {
+    func applyTheme(to theme: ThemeProtocol) {
         theme.assets.activateAssets()
         theme.extend?()
         saveCurrentThemeTypeToUserDefaults()
         UIApplication.shared.keyWindow?.reloadAllViews()
     }
     
-    func chageThemeForSystemDefault(app: UIApplication = UIApplication.shared) {
+    func chageThemeForSystemDefault() {
         let systemTheme = getSystemDefaultTheme()
         if currentlyAppliedTheme == systemTheme {
             return

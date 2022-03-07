@@ -10,6 +10,7 @@
 
 import Foundation
 import UIKit
+import Themer
 
 final class HomeViewController: UIViewController {
     // MARK: - Properties
@@ -24,6 +25,7 @@ final class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title =  "Home"
+        Themer.shared.apply(.dark)
     }
 }
 

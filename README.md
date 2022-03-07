@@ -1,4 +1,7 @@
-# T̼̼̖̾͟͞h̨͚͚͖ͯ̒̄͗͞ḛ̡̰̳͓̥ͬ͋ͪͧm̰̰̹͚̙̂ͦ͗͠ḛ̡̰̳͓̥ͬ͋ͪͧṛ̣̬̫̍͌ͩ͟
+
+
+#                                           T̼̼̖̾͟͞h̨͚͚͖ͯ̒̄͗͞ḛ̡̰̳͓̥ͬ͋ͪͧm̰̰̹͚̙̂ͦ͗͠ḛ̡̰̳͓̥ͬ͋ͪͧṛ̣̬̫̍͌ͩ͟
+
 
 [![Version](https://img.shields.io/cocoapods/v/Themer.svg?style=flat)](https://cocoapods.org/pods/Themer)
 [![License](https://img.shields.io/cocoapods/l/Themer.svg?style=flat)](https://cocoapods.org/pods/Themer)
@@ -49,11 +52,6 @@ class DarkTheme: ApplicationTheme {
             ),
             imageViewAssets: ImageViewAssets(
                 tintColor: .systemRed
-            ),
-            navigationBarAssets: NavigationBarAssets(
-                color: .systemBlue,
-                font: .systemFont(ofSize: 28),
-                borderWidth: 2
             )))
 }
 
@@ -61,9 +59,6 @@ class LightTheme: ApplicationTheme {
             var theme: Theme = DarkTheme().theme.copyWith(ThemeAssets(
                 labelAssets: LabelAssets(
                     color: .blue
-                ),
-                navigationBarAssets: NavigationBarAssets(
-                    color: .darkGray
                 )))
 ```
 
@@ -99,6 +94,21 @@ Use
 
 'ThemedButton' is just like a normal UIButton, but all the properties from 'ButtonAssets' will be applied to it. So, you  don't need any styling
 for it anywhere. 
+
+#### NavigationBarAssets
+
+NavigationBarAssets are initialized differently than other assets. All three appearance's need to be accounted for: standard, compact and scroll edge. You  are given a closure for each one, with a paramater being an instance of the 'UINavigationBarAppearance' that you can change properties on for each appearance, everything else is the same
+
+```swift
+            navigationBarAssets: NavigationBarAssets(standardApprance: { appearance in
+                appearance.backgroundColor = .blue
+                appearance.titleTextAttributes = [.font : UIFont.systemFont(ofSize: 28), .foregroundColor : UIColor.purple]
+            }, scrollEdgeApperance: { appearance in
+                appearance.titleTextAttributes = [.font : UIFont.systemFont(ofSize: 24), .foregroundColor : UIColor.yellow]
+            }, compactApperance: { appearance in
+                appearance.titleTextAttributes = [.font : UIFont.systemFont(ofSize: 20), .foregroundColor : UIColor.blue]
+            }
+```
 
 ## Listen to theme changes
 

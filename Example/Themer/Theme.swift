@@ -42,12 +42,15 @@ class DarkTheme: ApplicationTheme {
                 cornerRadius: 20,
                 borderWidth: 2
             ),
-            navigationBarAssets: NavigationBarAssets(
-                color: .systemBlue,
-                font: .systemFont(ofSize: 28),
-                cornerRadius: 40,
-                borderColor: .systemBlue,
-                borderWidth: 2
+            navigationBarAssets: NavigationBarAssets(standardApprance: { appearance in
+                print("Seettting background to blue")
+                appearance.backgroundColor = .blue
+                appearance.titleTextAttributes = [.font : UIFont.systemFont(ofSize: 28), .foregroundColor : UIColor.purple]
+            }, scrollEdgeApperance: { appearance in
+                appearance.titleTextAttributes = [.font : UIFont.systemFont(ofSize: 24), .foregroundColor : UIColor.yellow]
+            }, compactApperance: { appearance in
+                appearance.titleTextAttributes = [.font : UIFont.systemFont(ofSize: 20), .foregroundColor : UIColor.blue]
+            }
             ))) {
                 Themer.shared.addCustomAssets(to: .dark, asset: ButtonAssets<CustomThemedButton>(buttonColor: .systemBlue))
                 CustomThemedButton.appearance(whenContainedInInstancesOf: [CustomThemedView.self]).backgroundColor = .systemBrown
@@ -55,67 +58,33 @@ class DarkTheme: ApplicationTheme {
 }
 
 class LightTheme: ApplicationTheme {
-    var theme = Theme(
-        assets:
-            ThemeAssets(
-                labelAssets: LabelAssets(
-                    color: .blue,
-                    font: .systemFont(ofSize: 48),
-                    backgroundColor: .white
-                ),
-                buttonAssets: ButtonAssets(
-                    buttonColor: .blue,
-                    titleColor: .white,
-                    font: .systemFont(ofSize: 28),
-                    cornerRadius: 16,
-                    borderColor: .red,
-                    borderWidth: 4,
-                    shadowColor: .orange,
-                    shadowOffset: CGSize(width: 10, height: 20),
-                    shadowRadius: 8,
-                    shadowOpacity: 0.8
-                ),
-                imageViewAssets: ImageViewAssets(
-                    backgroundColor: .blue,
-                    cornerRadius: 10,
-                    borderColor: .systemTeal,
-                    borderWidth: 4,
-                    shadowOpacity: 0.8,
-                    tintColor: .systemTeal
-                ),
-                navigationBarAssets: NavigationBarAssets(
-                    color: .cyan,
-                    font: .systemFont(ofSize: 28),
-                    cornerRadius: 4,
-                    borderColor: .systemPurple,
-                    borderWidth: 2,
-                    shadowColor: .systemTeal,
-                    shadowOffset: CGSize(width: 10, height: 20),
-                    shadowRadius: 8
-                ))) {
-                    Themer.shared.addCustomAssets(to: .light, asset: ButtonAssets<CustomThemedButton>(buttonColor: .orange))
-                    CustomThemedButton.appearance(whenContainedInInstancesOf: [CustomThemedView.self]).backgroundColor = .systemRed
-                }
-//        var theme: Theme = DarkTheme().theme.copyWith(ThemeAssets(
-//            labelAssets: LabelAssets(
-//                color: .blue
-//            ),
-//            buttonAssets: ButtonAssets(
-//                buttonColor: .blue
-//            ),
-//            imageViewAssets: ImageViewAssets(
-//                tintColor: .yellow
-//            ),
-//            navigationBarAssets: NavigationBarAssets(
-//                color: .darkGray,
-//                font: .systemFont(ofSize: 28),
-//                cornerRadius: 4,
-//                borderColor: .systemPurple,
-//                borderWidth: 2,
-//                shadowColor: .systemTeal,
-//                shadowOffset: CGSize(width: 10, height: 20),
-//                shadowRadius: 8
-//            )))
+    var theme: Theme = DarkTheme().theme.copyWith(ThemeAssets(
+        labelAssets: LabelAssets(
+            color: .blue
+        ),
+        buttonAssets: ButtonAssets(
+            buttonColor: .blue,
+            cornerRadius: 16,
+            borderColor: .red,
+            borderWidth: 4,
+            shadowColor: .orange,
+            shadowOffset: CGSize(width: 10, height: 20),
+            shadowRadius: 8,
+            shadowOpacity: 0.8
+        ),
+        imageViewAssets: ImageViewAssets(
+            tintColor: .yellow
+        ),
+        navigationBarAssets: NavigationBarAssets(
+            standardApprance: { appearance in
+                print("Seettting background to red")
+                appearance.backgroundColor = .red
+                //appearance.titleTextAttributes = [.font : UIFont.systemFont(ofSize: 20), .foregroundColor : UIColor.orange]
+            }
+        ))) {
+            Themer.shared.addCustomAssets(to: .light, asset: ButtonAssets<CustomThemedButton>(buttonColor: .orange))
+            CustomThemedButton.appearance(whenContainedInInstancesOf: [CustomThemedView.self]).backgroundColor = .systemRed
+        }
 }
 
 class CustomThemedButton: ThemableButton {

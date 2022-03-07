@@ -487,60 +487,63 @@ public class ThemedCollectionViewCell: ThemableCollectionViewCell {}
 ///
 ///  - Note: Inherit from this class in order to be able eto apply `NavigationBarAssets` to that class.
 ///
+///
 open class ThemeableNavigationBar: UINavigationBar {
-    @objc dynamic var titleFont: UIFont? {
-        get { self.titleTextAttributes?[.font] as? UIFont ?? nil}
-        set(value) {
-            guard let newFont = value else {
-                return
-            }
-            var attributes = titleTextAttributes ?? [:]
-            attributes[NSAttributedString.Key.font] = newFont
-            self.titleTextAttributes = attributes
-        }
-    }
-    
-    @objc dynamic var cornerRadius: CGFloat {
-        get { self.cornerRadius }
-        set(newValue) { layer.cornerRadius = newValue }
-    }
-    
-    @objc dynamic var borderWidth: CGFloat {
-        get { self.borderWidth }
-        set(newValue) { self.layer.borderWidth = newValue }
-    }
-    
-    @objc dynamic var borderColor: UIColor? {
-        get {
-            guard let color = self.layer.borderColor else { return nil}
-            return UIColor(cgColor: color)
-        }
-        set(newValue) { layer.borderColor = newValue?.cgColor }
-    }
-    
-    @objc dynamic var shadowOffset: CGSize {
-        get { self.shadowOffset }
-        set(newValue) { layer.shadowOffset = newValue }
-    }
-    
-    @objc dynamic var shadowColor: UIColor? {
-        get {
-            guard let color = self.layer.shadowColor else { return nil}
-            return UIColor(cgColor: color)
-        }
-        set(newValue) { layer.shadowColor = newValue?.cgColor }
-    }
-    
-    @objc dynamic var shadowRadius: CGFloat {
-        get { self.shadowRadius }
-        set(newValue) { self.layer.shadowRadius = newValue }
-    }
-    
-    @objc dynamic var shadowOpacity: Float {
-        get { self.shadowOpacity }
-        set(newValue) { self.layer.shadowOpacity = newValue }
-    }
+//    @objc dynamic var titleFont: UIFont? {
+//        get { self.titleTextAttributes?[.font] as? UIFont ?? nil}
+//        set(value) {
+//            guard let newFont = value else {
+//                return
+//            }
+//            var attributes = titleTextAttributes ?? [:]
+//            attributes[NSAttributedString.Key.font] = newFont
+//            self.titleTextAttributes = attributes
+//        }
+//    }
+//
+//    @objc dynamic var cornerRadius: CGFloat {
+//        get { self.cornerRadius }
+//        set(newValue) { layer.cornerRadius = newValue }
+//    }
+//
+//    @objc dynamic var borderWidth: CGFloat {
+//        get { self.borderWidth }
+//        set(newValue) { self.layer.borderWidth = newValue }
+//    }
+//
+//    @objc dynamic var borderColor: UIColor? {
+//        get {
+//            guard let color = self.layer.borderColor else { return nil}
+//            return UIColor(cgColor: color)
+//        }
+//        set(newValue) { layer.borderColor = newValue?.cgColor }
+//    }
+//
+//    @objc dynamic var shadowOffset: CGSize {
+//        get { self.shadowOffset }
+//        set(newValue) { layer.shadowOffset = newValue }
+//    }
+//
+//    @objc dynamic var shadowColor: UIColor? {
+//        get {
+//            guard let color = self.layer.shadowColor else { return nil}
+//            return UIColor(cgColor: color)
+//        }
+//        set(newValue) { layer.shadowColor = newValue?.cgColor }
+//    }
+//
+//    @objc dynamic var shadowRadius: CGFloat {
+//        get { self.shadowRadius }
+//        set(newValue) { self.layer.shadowRadius = newValue }
+//    }
+//
+//    @objc dynamic var shadowOpacity: Float {
+//        get { self.shadowOpacity }
+//        set(newValue) { self.layer.shadowOpacity = newValue }
+//    }
 }
+
+
 
 /// Default class for a view with `NavigationBarAssets` of a theme being applied to it.
 ///
