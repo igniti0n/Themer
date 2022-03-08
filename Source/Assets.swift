@@ -117,7 +117,6 @@ public struct NavigationBarAssets<T: ThemeableNavigationBar>: ThemeAsset {
     
     /// Activates assets by applying them to the `ThemableNavigationBar` appearance
     public func activate() {
-        print("Activating nav bar appearance")
         T.appearance().standardAppearance = standardApprance
         T.appearance().scrollEdgeAppearance = scrollEdgeApperance
         T.appearance().compactAppearance = compactApperance
@@ -131,13 +130,11 @@ public struct NavigationBarAssets<T: ThemeableNavigationBar>: ThemeAsset {
         return NavigationBarAssets { appearance in
             self.standardClosure?(&appearance)
             newAssets.standardClosure?(&appearance)
-        }
-        scrollEdgeApperance: { appearance in
+        } scrollEdgeApperance: { appearance in
             self.scrollClosure?(&appearance)
             newAssets.scrollClosure?(&appearance)
-        }
-        compactApperance: { appearance in
-                self.compactClosure?(&appearance)
+        }   compactApperance: { appearance in
+            self.compactClosure?(&appearance)
             newAssets.compactClosure?(&appearance)
         }
     }
