@@ -1,21 +1,8 @@
-#
-# Be sure to run `pod lib lint Themer.podspec' to ensure this is a
-# valid spec before submitting.
-#
-# Any lines starting with a # are optional, but their use is encouraged
-# To learn more about a Podspec see https://guides.cocoapods.org/syntax/podspec.html
-#
 
 Pod::Spec.new do |s|
   s.name             = 'Themer'
   s.version          = '0.1.0'
   s.summary          = 'Theme management solution in Swift that includes light, dark, and system default options.'
-
-# This description is used to generate tags and improve search results.
-#   * Think: What does it do? Why did you write it? What is the focus?
-#   * Try to keep it short, snappy and to the point.
-#   * Write the description between the DESC delimiters below.
-#   * Finally, don't worry about the indent, CocoaPods strips it!
 
   s.description      = <<-DESC
 "Provides elgant way to use light and dark themes or opt to whatever the system default is. Makes whole views themable, instead of just colors and images. Allows high customization of view components and puts all theming in one place."
