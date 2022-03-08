@@ -99,6 +99,7 @@ Use
 'ThemedButton' is just like a normal UIButton, but all the properties from 'ButtonAssets' will be applied to it. So, you  don't need any styling
 for it anywhere. 
 
+
 #### NavigationBarAssets
 
 NavigationBarAssets are initialized differently than other assets. All three appearance's need to be accounted for: standard, compact and scroll edge. You  are given a closure for each one, with a paramater being an instance of the 'UINavigationBarAppearance' that you can change properties on for each appearance, everything else is the same.
