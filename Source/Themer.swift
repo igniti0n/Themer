@@ -295,7 +295,7 @@ private extension Themer {
     func setupSystemThemeChangeCallbacks() {
         // Notified for when user exits, goes settings, changes theme mode, comes back
         let notifications = NotificationCenter.default
-        notifications.addObserver(self, selector: #selector(onSystemThemeChanged), name: .UIApplicationDidBecomeActive, object: nil)
+        notifications.addObserver(self, selector: #selector(onSystemThemeChanged), name: UIApplication.didBecomeActiveNotification, object: nil)
         // Notified when user changes theme mode during runtime
         UIApplication.shared.connectedScenes.forEach { scene in
             guard let scene = scene as? UIWindowScene else { return }
