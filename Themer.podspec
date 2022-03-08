@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
   s.name             = 'Themer'
   s.version          = '0.1.0'
-  s.summary          = 'Theme management solution in Swift'
+  s.summary          = 'Theme management solution in Swift that includes light, dark, and system default options.'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -18,7 +18,7 @@ Pod::Spec.new do |s|
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 
   s.description      = <<-DESC
-"Provides elgant way to use light and dark themes or opt to whatever the system default is. Allows high customization of view components and puts all theming in one place."
+"Provides elgant way to use light and dark themes or opt to whatever the system default is. Makes whole views themable, instead of just colors and images. Allows high customization of view components and puts all theming in one place."
                        DESC
 
   s.homepage         = 'https://github.com/igniti0n/Themer'

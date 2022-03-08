@@ -13,14 +13,19 @@ import UIKit
 import Themer
 
 final class ProfileCoordinator: Coordinator {
+    
+    // MARK: - Properties -
     let navigationController: UINavigationController?
 
+    // MARK: - Init -
+    
     init() {
         self.navigationController = UINavigationController(navigationBarClass: ThemedNavigationBar.self, toolbarClass: nil)
     }
 }
 
-// MARK: - Public methods
+// MARK: - Public methods -
+
 extension ProfileCoordinator {
     func start() -> UIViewController {
         let viewController = ProfileViewController()

@@ -10,8 +10,13 @@ import UIKit
 import Themer
 
 final class ProfileTableViewCell: ThemedTableViewCell {
+    
+    // MARK: - Properties -
+    
     static let reuseIdentifier = "ProfileTableViewCell"
     private lazy var label = UILabel()
+    
+    // MARK: - Init -
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -24,14 +29,16 @@ final class ProfileTableViewCell: ThemedTableViewCell {
     }
 }
 
-// MARK: - Public meethods
+// MARK: - Public methods -
+
 extension ProfileTableViewCell {
     func updateCell(with text: String) {
         label.text = text
     }
 }
 
-// MARK: - Prvate meethods
+// MARK: - Prvate meethods -
+
 private extension ProfileTableViewCell {
     func setupViews() {
         setupLabel()

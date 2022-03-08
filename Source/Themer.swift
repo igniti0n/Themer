@@ -88,7 +88,7 @@ public class Themer: ThemerProtocol {
     ///  Currently applied theme, either `dark` or  `light`
     public var currentlyAppliedTheme: AppThemeType?
     
-    /// Is current theme mode `light`, `dark` or `system default`
+    /// Current theme mode. `Light`, `dark` or `system default`
     public var currentThemeType: AppThemeType = .systemDefault
     private var animationSettings: ThemeAnimationSettings?
     private var lightTheme: ApplicationTheme?
@@ -143,10 +143,8 @@ public extension Themer {
     ///   - theme:  `AppThemeType` to apply to the application.
     func apply(_ theme: AppThemeType) {
         if theme == currentThemeType {
-            print("Trying to apply theme that is allready applied!")
             return
         }
-        print("Applying theme: ", theme)
         currentThemeType = theme
         applyThemeForThemeType(theme)
     }
@@ -169,11 +167,8 @@ public extension Themer {
     func setup(lightTheme: ApplicationTheme, darkTheme: ApplicationTheme) {
         self.lightTheme = lightTheme
         self.darkTheme = darkTheme
-        print("Setting up both themes.")
         setupSystemThemeChangeCallbacks()
-        print("Set theme change callbacks.")
         getCurrentThemeTypeFromUserDefaults()
-        print("Got current theme type from defaults: ", currentThemeType)
         applyThemeForThemeType(currentThemeType)
     }
     
@@ -211,7 +206,6 @@ private extension Themer {
     }
     
     func applyLightTheme() {
-        print("Applying light theme.")
         assert(lightTheme != nil)
         guard let lightTheme = lightTheme else { return }
         currentlyAppliedTheme = .light
@@ -220,7 +214,6 @@ private extension Themer {
     }
     
     func applyDarkTheme() {
-        print("Applying dark theme.")
         assert(darkTheme != nil)
         guard let darkTheme = darkTheme else { return }
         currentlyAppliedTheme = .dark

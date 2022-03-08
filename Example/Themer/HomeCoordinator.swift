@@ -13,11 +13,21 @@ import UIKit
 import Themer
 
 final class HomeCoordinator: Coordinator {
+    
+    // MARK: - Properties -
+
     let navigationController: UINavigationController?
+
+    // MARK: - Init -
 
     init() {
         self.navigationController = UINavigationController(navigationBarClass: ThemedNavigationBar.self, toolbarClass: nil)
     }
+}
+
+// MARK: - Public methods -
+
+extension HomeCoordinator {
     func start() -> UIViewController {
         let homeViewController = HomeViewController()
         navigationController?.viewControllers = [homeViewController]

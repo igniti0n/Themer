@@ -10,7 +10,9 @@ import UIKit
 import Themer
 
 final class ProfileView: UIView {
-    // MARK: - Propertie
+    
+    // MARK: - Properties -
+    
     private lazy  var tableView = ThemedTableView()
     private lazy var imageViewTinted = ThemedImageView(namedTinted: "home")
     private lazy var imageView = ThemedImageView(namedAny: "light")
@@ -18,10 +20,10 @@ final class ProfileView: UIView {
     private lazy var lightButton = CustomThemedButton()
     private lazy var darkButton = ThemedButton()
     
-    // MARK: - Initi
+    // MARK: - Init -
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
-//        Themer.shared.addDelegate(self)
         setupViews()
     }
     
@@ -31,7 +33,8 @@ final class ProfileView: UIView {
     }
 }
 
-// MARK: - Public methods
+// MARK: - Public methods -
+
 extension ProfileView {
     func reloadView() {
         tableView.reloadData()
@@ -42,7 +45,8 @@ extension ProfileView {
     }
 }
 
-// MARK: - Private methods
+// MARK: - Private methods -
+
 private extension ProfileView {
     func setupViews() {
         backgroundColor = .white

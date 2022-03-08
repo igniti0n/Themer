@@ -9,28 +9,36 @@ import Foundation
 import UIKit
 
 class TabBarViewController: UITabBarController {
+    
+    // MARK: - Properties -
+    
     var coordinators: [Coordinator] = []
+    
+    // MARK: - Lifecycle -
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupHome()
         setupProfile()
-        UITabBar.appearance().backgroundColor = .systemBrown
     }
-    
+}
+
+// MARK: - Private methods -
+
+extension TabBarViewController {
     func setupHome() {
-        let hc = HomeCoordinator()
-        coordinators.append(hc)
-        let vc = hc.start()
-        vc.tabBarItem = UITabBarItem(tabBarSystemItem: .bookmarks, tag: 0)
-        viewControllers = [vc]
+        let homeCoordinator = HomeCoordinator()
+        coordinators.append(homeCoordinator)
+        let viewController = homeCoordinator.start()
+        viewController.tabBarItem = UITabBarItem(tabBarSystemItem: .bookmarks, tag: 0)
+        viewControllers = [viewController]
     }
     
     func setupProfile() {
-        let pc = ProfileCoordinator()
-        coordinators.append(pc)
-        let vc = pc.start()
-        vc.tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 1)
-        viewControllers?.append(vc)
+        let profileCoordinator = ProfileCoordinator()
+        coordinators.append(profileCoordinator)
+        let viewController = profileCoordinator.start()
+        viewController.tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 1)
+        viewControllers?.append(viewController)
     }
 }

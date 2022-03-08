@@ -9,7 +9,6 @@ import Foundation
 import UIKit
 
 /// Describes what an `ThemeAsset` should contain.
-/// Note
 public protocol ThemeAsset {
     /// Activates `ThemeAsset` for the `UIAppearance` of the attached view.
     func activate()

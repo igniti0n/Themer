@@ -12,11 +12,14 @@ import Foundation
 import UIKit
 
 final class ProfileViewController: UIViewController {
-    // MARK: - Properties
+    
+    // MARK: - Properties -
+    
     private let mainView = ProfileView()
     private let tableDataSource = ["hello","hi","some data","I am themed cell"]
     
-    // MARK: - Lifecycle
+    // MARK: - Lifecycle -
+    
     override func loadView() {
         super.loadView()
         view = mainView
@@ -30,10 +33,12 @@ final class ProfileViewController: UIViewController {
 }
 
 
-// MARK: - UITableViewDelegate methods
+// MARK: - UITableViewDelegate methods -
+
 extension ProfileViewController: UITableViewDelegate {}
 
-// MARK: - UITableViewDataSource methods
+// MARK: - UITableViewDataSource methods -
+
 extension ProfileViewController:  UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         tableDataSource.count

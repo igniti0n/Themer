@@ -430,7 +430,7 @@ public  class ThemedCollectionView: ThemableCollectionView { }
 
 /// Provides ways to  update properties on an `UIAppearance` of a  `UICollectionViewCell`, with all its normal functionalities.
 ///
-///  - Note: Inherit from this class in order to be able eto apply `CollctionViewCellAssets` to that class.
+///  - Note: Inherit from this class in order to be able eto apply `CollectionViewCellAssets` to that class.
 ///
 open class ThemableCollectionViewCell: UICollectionViewCell {
     @objc dynamic var cornerRadius: CGFloat {
@@ -475,9 +475,9 @@ open class ThemableCollectionViewCell: UICollectionViewCell {
     }
 }
 
-/// Default class for a view with `CollctionViewCellAssets` of a theme being applied to it.
+/// Default class for a view with `CollectionViewCellAssets` of a theme being applied to it.
 ///
-///  - Note: `CollctionViewCellAssets` from a provided `CollctionViewCellAssets` of a theme are being applied to this  view.
+///  - Note: `CollctionViewCellAssets` from a provided `CollectionViewCellAssets` of a theme are being applied to this  view.
 ///
 public class ThemedCollectionViewCell: ThemableCollectionViewCell {}
 
@@ -488,61 +488,7 @@ public class ThemedCollectionViewCell: ThemableCollectionViewCell {}
 ///  - Note: Inherit from this class in order to be able eto apply `NavigationBarAssets` to that class.
 ///
 ///
-open class ThemeableNavigationBar: UINavigationBar {
-//    @objc dynamic var titleFont: UIFont? {
-//        get { self.titleTextAttributes?[.font] as? UIFont ?? nil}
-//        set(value) {
-//            guard let newFont = value else {
-//                return
-//            }
-//            var attributes = titleTextAttributes ?? [:]
-//            attributes[NSAttributedString.Key.font] = newFont
-//            self.titleTextAttributes = attributes
-//        }
-//    }
-//
-//    @objc dynamic var cornerRadius: CGFloat {
-//        get { self.cornerRadius }
-//        set(newValue) { layer.cornerRadius = newValue }
-//    }
-//
-//    @objc dynamic var borderWidth: CGFloat {
-//        get { self.borderWidth }
-//        set(newValue) { self.layer.borderWidth = newValue }
-//    }
-//
-//    @objc dynamic var borderColor: UIColor? {
-//        get {
-//            guard let color = self.layer.borderColor else { return nil}
-//            return UIColor(cgColor: color)
-//        }
-//        set(newValue) { layer.borderColor = newValue?.cgColor }
-//    }
-//
-//    @objc dynamic var shadowOffset: CGSize {
-//        get { self.shadowOffset }
-//        set(newValue) { layer.shadowOffset = newValue }
-//    }
-//
-//    @objc dynamic var shadowColor: UIColor? {
-//        get {
-//            guard let color = self.layer.shadowColor else { return nil}
-//            return UIColor(cgColor: color)
-//        }
-//        set(newValue) { layer.shadowColor = newValue?.cgColor }
-//    }
-//
-//    @objc dynamic var shadowRadius: CGFloat {
-//        get { self.shadowRadius }
-//        set(newValue) { self.layer.shadowRadius = newValue }
-//    }
-//
-//    @objc dynamic var shadowOpacity: Float {
-//        get { self.shadowOpacity }
-//        set(newValue) { self.layer.shadowOpacity = newValue }
-//    }
-}
-
+open class ThemeableNavigationBar: UINavigationBar {}
 
 
 /// Default class for a view with `NavigationBarAssets` of a theme being applied to it.

@@ -41,7 +41,7 @@ public struct ViewAssets<T: ThemableView>: ThemeAsset {
         self.shadowOpacity = shadowOpacity
     }
     
-    /// Activates assets by applying them to the `ThemableView`appearance
+    /// Activates assets by applying them to the `ThemableView` appearance
     public func activate() {
         T.appearance().backgroundColor = color
         T.appearance().cornerRadius = cornerRadius ?? 0
@@ -86,7 +86,7 @@ public struct NavigationBarAssets<T: ThemeableNavigationBar>: ThemeAsset {
     ///
     /// - Parameters:
     ///   - standardAppearance: Closure that provides a UINavigationBarAppearance instance, on which you can setup the NavigationBar's standdard appearance. The default value of this property is an appearance object containing the system's default appearance settings.
-    ///   - `scrollEdgeAppearance`: Closure that provides a UINavigationBarAppearance instance, on which you can setup the NavigationBar's scrollEdgeApperance  appearance. `The provided  instance is a copy of standardAppearance`,  so you can modify wwhat is changed based on the standardApperance. If the value of this property is nil,  the settings found in the standardAppearance property are used.
+    ///   - `scrollEdgeAppearance`:  Closure that provides a UINavigationBarAppearance instance, on which you can setup the NavigationBar's scrollEdgeApperance  appearance. `The provided  instance is a copy of standardAppearance`,  so you can modify wwhat is changed based on the standardApperance. If the value of this property is nil,  the settings found in the standardAppearance property are used.
     ///   - `compactApperance`:  Closure that provides a UINavigationBarAppearance instance, on which you can setup the NavigationBar's compactAppearance. `The provided  instance is a copy of standardAppearance`,  so you can modify wwhat is changed based on the standardApperance. If the value of this property is nil,  the settings found in the standardAppearance property are used.
     public init(
         standardApprance: ((inout UINavigationBarAppearance) -> Void)? = nil,
@@ -115,7 +115,7 @@ public struct NavigationBarAssets<T: ThemeableNavigationBar>: ThemeAsset {
         }()
     }
     
-    /// Activates assets by applying them to the `ThemableNavigationBar`appearance
+    /// Activates assets by applying them to the `ThemableNavigationBar` appearance
     public func activate() {
         print("Activating nav bar appearance")
         T.appearance().standardAppearance = standardApprance
@@ -162,7 +162,7 @@ public struct LabelAssets<T: ThemableLabel>: ThemeAsset {
         self.backgroundColor = backgroundColor
     }
     
-    /// Activates assets by applying them to the `ThemableLabel`appearance
+    /// Activates assets by applying them to the `ThemableLabel` appearance
     public func activate() {
         T.appearance().textColor = color
         T.appearance().font = font
@@ -277,7 +277,7 @@ public struct SwitchAssets<T: ThemableSwitch>: ThemeAsset {
         self.onTintColor = onTintColor
     }
     
-    /// Activates assets by applying them to the `ThemableSwitch`appearance
+    /// Activates assets by applying them to the `ThemableSwitch` appearance
     public func activate() {
         T.appearance().backgroundColor = backgroundColor
         T.appearance().onImage = onImage
@@ -336,7 +336,7 @@ public struct ImageViewAssets<T: ThemableImageView>: ThemeAsset {
         self.tintColor = tintColor
     }
     
-    /// Activates assets by applying them to the `ThemableImageView`appearance
+    /// Activates assets by applying them to the `ThemableImageView` appearance
     public func activate() {
         T.appearance().backgroundColor = backgroundColor
         T.appearance().cornerRadius = cornerRadius ?? 0
@@ -403,7 +403,7 @@ public struct TableViewAssets<T: ThemableTableView>: ThemeAsset {
         self.shadowOpacity = shadowOpacity
     }
     
-    /// Activates assets by applying them to the `ThemablTableView`appearance
+    /// Activates assets by applying them to the `ThemablTableView` appearance
     public func activate() {
         T.appearance().backgroundColor = backgroundColor
         T.appearance().cornerRadius = cornerRadius ?? 0
@@ -465,7 +465,7 @@ public struct TableViewCellAssets<T: ThemableTableViewCell>: ThemeAsset {
         self.shadowOpacity = shadowOpacity
     }
     
-    /// Activates assets by applying them to the `ThemableTableViewCell`appearance
+    /// Activates assets by applying them to the `ThemableTableViewCell` appearance
     public func activate() {
         T.appearance().backgroundColor = backgroundColor
         T.appearance().cornerRadius = cornerRadius ?? 0
@@ -528,7 +528,7 @@ public struct CollectionViewAssets<T: ThemableCollectionView>: ThemeAsset {
         self.shadowOpacity = shadowOpacity
     }
     
-    /// Activates assets by applying them to the `ThemableCollectionView`appearance
+    /// Activates assets by applying them to the `ThemableCollectionView` appearance
     public func activate() {
         T.appearance().backgroundColor = backgroundColor
         T.appearance().cornerRadius = cornerRadius ?? 0
@@ -591,7 +591,7 @@ public struct CollectionViewCellAssets<T: ThemableCollectionViewCell>: ThemeAsse
         self.shadowOpacity = shadowOpacity
     }
     
-    /// Activates assets by applying them to the `ThemableCollectionViewCell`appearance
+    /// Activates assets by applying them to the `ThemableCollectionViewCell` appearance
     public func activate() {
         T.appearance().backgroundColor = backgroundColor
         T.appearance().cornerRadius = cornerRadius ?? 0

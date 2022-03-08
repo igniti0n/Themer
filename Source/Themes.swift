@@ -19,18 +19,17 @@ public protocol ApplicationTheme {
 }
 
 /**
-Used  to  represent a single theme. Holding `assets` that represent a theme's button, labels,, navigation bar... This  assets are applied to
- `ThemedButton`, `ThemedLabel`, `ThemedNavigationBar`...,   and can be used in your view's by replacing UIKit view classes
- with themed ones. So, instead UIButton use ThemedButton, and so on.
+Used  to  represent a single theme. Holds `assets` that represent a theme's button, labels, navigation bar...
  
- Enabels you to use `extend` callback. Which is used to extend some thing on the theme. For ex, when a ThemedButton is inside ThemedView, make its color blue.
+ These assets are applied to `ThemedButton`, `ThemedLabel`, `ThemedNavigationBar`...,   and can be used in your views by replacing UIKit view classes with themed ones. Instead UIButton use ThemedButton, and so on. Enables you to use `extend` callback. Which is used to extend something on the theme. For example, when a ThemedButton is inside ThemedView, make its color blue.
 */
 public class Theme: ThemeProtocol {
     
     // MARK: - Properties -
     
-    /// Represent a theme's button, labels,, navigation bar... This  assets are applied to
-    /// `ThemedButton`, `ThemedLabel`, `ThemedNavigationBar`...,   and can be used in your view's by replacing UIKit view classes
+    /// Represent a theme's button, labels,, navigation bar...
+    ///
+    /// This  assets are applied to `ThemedButton`, `ThemedLabel`, `ThemedNavigationBar`...,   and can be used in your view's by replacing UIKit view classes
     /// with themed ones. So, instead UIButton use ThemedButton, and so on.
     public var assets: ThemeAssets
     

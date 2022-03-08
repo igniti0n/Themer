@@ -12,7 +12,9 @@ import Themer
 typealias EmptyCallback =  () -> Void
 
 final class HomeView: UIView {
-    // MARK: - Properties
+    
+    // MARK: - Properties -
+    
     private lazy var imageView = ThemedImageView(namedLight: "light", namedDark: "dark")
     private lazy var label = ThemedLabel()
     private lazy var lightButton =  CustomThemedButton()
@@ -20,10 +22,10 @@ final class HomeView: UIView {
     private lazy var systemDefaultButton = ThemedButton()
     private let themer = Themer.shared
 
-    // MARK: - Initi
+    // MARK: - Init -
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
-        //Themer.shared.addDelegate(self)
         setupViews()
         let nc = NotificationCenter.default
         nc.addObserver(self, selector: #selector(onThemeChanged), name: Themer.notificationName, object: nil)
@@ -34,12 +36,13 @@ final class HomeView: UIView {
     }
 }
 
-// MARK: - Private methods
+// MARK: - Private methods -
+
 private extension HomeView {
     @objc func onThemeChanged() {
         label.text = "\(themer.currentlyAppliedTheme?.string)"
-
     }
+    
     func setupViews() {
         backgroundColor = .white
         setupImageView()
