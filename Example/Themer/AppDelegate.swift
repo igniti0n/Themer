@@ -24,7 +24,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Themer.shared.setup(lightTheme: LightTheme(), darkTheme: DarkTheme())
         // ThemeManager.shared.setup(withUniversalTheme: DarkTheme())
         Themer.shared.addCustomAssets(to: .dark, asset: ViewAssets<CustomThemedView>(color: .systemBrown))
-        Themer.shared.apply(.systemDefault)
         return true
     }
 

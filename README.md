@@ -1,13 +1,13 @@
 
 
-#                                           T̼̼̖̾͟͞h̨͚͚͖ͯ̒̄͗͞ḛ̡̰̳͓̥ͬ͋ͪͧm̰̰̹͚̙̂ͦ͗͠ḛ̡̰̳͓̥ͬ͋ͪͧṛ̣̬̫̍͌ͩ͟
+#                   T̼̼̖̾͟͞h̨͚͚͖ͯ̒̄͗͞ḛ̡̰̳͓̥ͬ͋ͪͧm̰̰̹͚̙̂ͦ͗͠ḛ̡̰̳͓̥ͬ͋ͪͧṛ̣̬̫̍͌ͩ͟
 
 
 [![Version](https://img.shields.io/cocoapods/v/Themer.svg?style=flat)](https://cocoapods.org/pods/Themer)
 [![License](https://img.shields.io/cocoapods/l/Themer.svg?style=flat)](https://cocoapods.org/pods/Themer)
 [![Platform](https://img.shields.io/cocoapods/p/Themer.svg?style=flat)](https://cocoapods.org/pods/Themer)
 
-Themer enabels you to switch between light, dark and system default theme modes, gives you default themed classes of each view and allowing you define all assets (color, border color, font, border width...) for them, as well as giving you the option to make your own custom themed views and their assets. Moves code from your view by defining their looks from one place and makes changes to styling easy.
+Themer enables you to switch between light, dark, and system default theme modes, gives you default themed classes of each view, and allows you to define all assets (color, border color, font, border width...) for them, as well as giving you the option to make your own custom themed views and their assets. Moves code from your view by defining their looks from one place and makes changes to styling easy.
 
 ## Installation
 
@@ -26,13 +26,14 @@ pod 'Themer'
 - [x] themed views, not just colors and fonts
 - [x] adding multiple custom themed views
 
+
 ## How to use it
 
 Themer is straight forward to use, setup your themes and apply whatever theme you want!
 
 #### Setup a theme
 
-Define your themes by inheriting from 'ApplicationTheme'. It enabels you to define many different assets for your themed views in that theme.
+Define your themes by inheriting from 'ApplicationTheme'. It enables you to define many different assets for your themed views in that theme.
 
 ```swift
 class DarkTheme: ApplicationTheme {
@@ -62,23 +63,26 @@ class LightTheme: ApplicationTheme {
                 )))
 ```
 
-In your app, as soon as possible, setup your theme and apply it!
+In your app, as soon as possible, setup your theme. By default, when you first start your app, theme will be whatever the system default is.
 
 ```swift
         Themer.shared.setup(lightTheme: LightTheme(), darkTheme: DarkTheme())
-        Themer.shared.apply(.dark)
 ```
 
 Anywhere in your application, you can apply a theme and your app theme will change. You can also use animations
 when applying a theme.
 
-```swift
+```swift   
+        // Instant theme switch
+        Themer.shared.apply(.dark)
+        
+        // Fancy theme switch
         Themer.shared.apply(.systemDefault, withAnimation: ThemeAnimationSettings(duration: 0.4, delay: 0, animationOptions: .transitionFlipFromTop))
 ```
 
 #### Use themed views in your view
 
-In your theme, all assets correspond to their themed versions. So, 'ButtonAssets' define how 'ThemedButton' looks like.
+In your theme, all assets correspond to their themed versions. So, 'ButtonAssets' define what 'ThemedButton' looks like.
 
 Instead
 
@@ -97,7 +101,7 @@ for it anywhere.
 
 #### NavigationBarAssets
 
-NavigationBarAssets are initialized differently than other assets. All three appearance's need to be accounted for: standard, compact and scroll edge. You  are given a closure for each one, with a paramater being an instance of the 'UINavigationBarAppearance' that you can change properties on for each appearance, everything else is the same
+NavigationBarAssets are initialized differently than other assets. All three appearance's need to be accounted for: standard, compact and scroll edge. You  are given a closure for each one, with a paramater being an instance of the 'UINavigationBarAppearance' that you can change properties on for each appearance, everything else is the same.
 
 ```swift
             navigationBarAssets: NavigationBarAssets(standardApprance: { appearance in
@@ -110,6 +114,10 @@ NavigationBarAssets are initialized differently than other assets. All three app
             }
 ```
 
+By default, standard appearance is applied on all appearances, whatever you do in scroll edge or compact appearance closures, will be added/changed based on the standard appearance.
+Note that on, for example, iOS 14 and 15, appearances behave a bit differently and you are free to check the current iOS version and set different values in each closure based on that. For example, I have found that in some situations scroll edge appearance is being applied on iOS 15, wherein iOS 14 standard appearance was applied.
+
+
 ## Listen to theme changes
 
 Anywhere in your application, you can listen to theme changes  using 'NotificationCenter'
@@ -119,10 +127,10 @@ Anywhere in your application, you can listen to theme changes  using 'Notificati
         nc.addObserver(self, selector: #selector(onThemeChanged), name: Themer.notificationName, object: nil)
 ```
 
+
 ## Custom themed views
 
-Out of the box, from Themer,  you get themed view like ThemedButton, ThemedNavigationBar, ThemedLabel... But, what if you want  2 or 3 different
-styles fo buttons in light and dark theme? No problem, just add custom themed and attach assets to them.
+Out of the box, you get a themed view like ThemedButton, ThemedNavigationBar, ThemedLabel... But, what if you want  2 or 3 different styles of buttons in a light and dark theme? No problem, just create a custom-themed view and attach assets to them.
 
 #### Create a themed view, by extending one of the 'Themable' prefixed protocols.
 
@@ -142,9 +150,11 @@ styles fo buttons in light and dark theme? No problem, just add custom themed an
     let button = CustomThemedButton()
 ```
 
+
 ## Author
 
 igniti0n, ivanat735@gmail.com
+
 
 ## License
 
