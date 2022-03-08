@@ -225,7 +225,16 @@ private extension Themer {
         theme.assets.activateAssets()
         theme.extend?()
         saveCurrentThemeTypeToUserDefaults()
-        UIApplication.shared.keyWindow?.reloadAllViews()
+        UIApplication.shared.connectedScenes.forEach { scene in
+            guard let scene = scene as? UIWindowScene else { return }
+            if #available(iOS 15.0, *) {
+                scene.keyWindow?.reloadAllViews()
+            } else {
+                scene.windows.forEach { window in
+                    window.reloadAllViews()
+                }
+            }
+        }
     }
     
     func chageThemeForSystemDefault() {
@@ -286,9 +295,16 @@ private extension Themer {
     func setupSystemThemeChangeCallbacks() {
         // Notified for when user exits, goes settings, changes theme mode, comes back
         let notifications = NotificationCenter.default
-        notifications.addObserver(self, selector: #selector(onSystemThemeChanged), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
+        notifications.addObserver(self, selector: #selector(onSystemThemeChanged), name: .UIApplicationDidBecomeActive, object: nil)
         // Notified when user changes theme mode during runtime
-        UIApplication.shared.keyWindow?.addSubview(detectingThemeChangesView)
+        UIApplication.shared.connectedScenes.forEach { scene in
+            guard let scene = scene as? UIWindowScene else { return }
+            if #available(iOS 15.0, *) {
+                scene.keyWindow?.addSubview(detectingThemeChangesView)
+            } else {
+                scene.windows.first?.addSubview(detectingThemeChangesView)
+            }
+        }
     }
     
     @objc  func onSystemThemeChanged() {
