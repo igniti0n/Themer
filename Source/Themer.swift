@@ -60,7 +60,7 @@ fileprivate class DetectingThemeChangesView: UIView {
 }
 
 public protocol ThemerProtocol {
-    var currentlyAppliedTheme: AppThemeType { get set}
+    var currentlyAppliedTheme: AppThemeType? { get set}
     var currentThemeType: AppThemeType { get set }
     func apply(_ theme: AppThemeType, withAnimation settings: ThemeAnimationSettings)
     func apply(_ theme: AppThemeType)
@@ -86,7 +86,7 @@ public class Themer: ThemerProtocol {
     public static let notificationName = Notification.Name("ThemerThemeChangeNotification")
     
     ///  Currently applied theme, either `dark` or  `light`
-    public var currentlyAppliedTheme: AppThemeType = .light
+    public var currentlyAppliedTheme: AppThemeType?
     
     /// Is current theme mode `light`, `dark` or `system default`
     public var currentThemeType: AppThemeType = .systemDefault
@@ -142,18 +142,13 @@ public extension Themer {
     /// - Parameters:
     ///   - theme:  `AppThemeType` to apply to the application.
     func apply(_ theme: AppThemeType) {
-        if theme == currentlyAppliedTheme {
+        if theme == currentThemeType {
+            print("Trying to apply theme that is allready applied!")
             return
         }
+        print("Applying theme: ", theme)
         currentThemeType = theme
-        switch theme {
-        case .light:
-            applyLightTheme()
-        case .dark:
-            applyDarkTheme()
-        case .systemDefault:
-            chageThemeForSystemDefault()
-        }
+        applyThemeForThemeType(theme)
     }
 
     /// Sets up the application to have one universal theme.
@@ -163,6 +158,7 @@ public extension Themer {
     func setup(withUniversalTheme theme: ApplicationTheme) {
         lightTheme = theme
         darkTheme = theme
+        applyThemeForThemeType(currentThemeType)
     }
 
     /// Sets up the application to have light and dark theme.
@@ -173,7 +169,12 @@ public extension Themer {
     func setup(lightTheme: ApplicationTheme, darkTheme: ApplicationTheme) {
         self.lightTheme = lightTheme
         self.darkTheme = darkTheme
+        print("Setting up both themes.")
         setupSystemThemeChangeCallbacks()
+        print("Set theme change callbacks.")
+        getCurrentThemeTypeFromUserDefaults()
+        print("Got current theme type from defaults: ", currentThemeType)
+        applyThemeForThemeType(currentThemeType)
     }
     
     /// Adds a custom `ThemeAsset` attached to the generic class parameter of the provided asset.
@@ -198,7 +199,19 @@ public extension Themer {
 
 // MARK: - Private methods -
 private extension Themer {
+    func applyThemeForThemeType(_ type: AppThemeType) {
+        switch type {
+        case .light:
+            applyLightTheme()
+        case .dark:
+            applyDarkTheme()
+        case .systemDefault:
+            chageThemeForSystemDefault()
+        }
+    }
+    
     func applyLightTheme() {
+        print("Applying light theme.")
         assert(lightTheme != nil)
         guard let lightTheme = lightTheme else { return }
         currentlyAppliedTheme = .light
@@ -207,6 +220,7 @@ private extension Themer {
     }
     
     func applyDarkTheme() {
+        print("Applying dark theme.")
         assert(darkTheme != nil)
         guard let darkTheme = darkTheme else { return }
         currentlyAppliedTheme = .dark
@@ -222,6 +236,7 @@ private extension Themer {
     }
     
     func chageThemeForSystemDefault() {
+        saveCurrentThemeTypeToUserDefaults()
         let systemTheme = getSystemDefaultTheme()
         if currentlyAppliedTheme == systemTheme {
             return
@@ -272,7 +287,7 @@ private extension Themer {
         let defaults = UserDefaults.standard
         let themeIndex = defaults.integer(forKey: userDefaultsKey)
         let theme = AppThemeType.init(rawValue: themeIndex)
-        currentThemeType = theme ?? .light
+        currentThemeType = theme ?? .systemDefault
     }
     
     func setupSystemThemeChangeCallbacks() {

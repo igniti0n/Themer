@@ -25,7 +25,6 @@ final class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title =  "Home"
-        Themer.shared.apply(.dark)
     }
 }
 

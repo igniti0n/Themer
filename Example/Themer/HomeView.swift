@@ -37,7 +37,7 @@ final class HomeView: UIView {
 // MARK: - Private methods
 private extension HomeView {
     @objc func onThemeChanged() {
-        label.text = "\(themer.currentlyAppliedTheme.string)"
+        label.text = "\(themer.currentlyAppliedTheme?.string)"
 
     }
     func setupViews() {
@@ -68,7 +68,7 @@ private extension HomeView {
             label.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 20),
             label.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor)
         ])
-        label.text = "\(themer.currentlyAppliedTheme.string)"
+        label.text = "\(themer.currentlyAppliedTheme?.string)"
     }
     
     func setupLightButton() {
